@@ -1,0 +1,45 @@
+/* default post listing styles */
+.scc-post-list {
+	position: relative;
+	padding: 1em;
+	border: 1px solid #dadada;
+	margin: 0 0 1.5em;
+}
+.scc-post-container {
+	display: none;
+}
+.scc-post-list p:last-of-type {
+	margin: 0 1em 0 0;
+}
+.scc-post-list ol {
+	margin: 1.5em 0 0 1.5em;
+}
+.scc-post-list li {
+	padding: .5em 0 0 0;
+}
+.scc-post-list li:first-child {
+	padding-top: 0;
+}
+.scc-post-list li:last-child {
+	padding-bottom: 0;
+}
+.scc-post-list a {
+}
+.scc-current-post {
+	font-weight: bold;
+}
+.scc-post-list h3 {
+	margin-top: 0;
+}
+.scc-post-list .scc-show-post-list {
+	position: absolute;
+		right: 10px;
+		bottom: 2px;
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+}
+.scc-show-post-list i {
+	margin-left: 6px;
+}
