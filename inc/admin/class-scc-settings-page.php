@@ -97,7 +97,7 @@ class SCC_Settings_Page {
 	
 	
 	/**
-	 * validate position setting
+	 * save position setting
 	 *
 	 * @since 1.0.0
 	 */
