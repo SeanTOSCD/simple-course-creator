@@ -20,6 +20,9 @@ class SCC_Settings_Page {
 		
 		// load settings page
 		add_action( 'admin_menu', array( $this, 'settings_menu' ) );
+		
+		// register settings
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
 	
 	
@@ -40,6 +43,69 @@ class SCC_Settings_Page {
 	
 	
 	/**
+	 * register settings
+	 *
+	 * @since 1.0.0
+	 */
+	public function register_settings() {
+		add_settings_section( 
+			'course_display_settings', 
+			__( 'Course Display Settings', 'scc' ), 
+			array( $this, 'course_display_settings' ), 
+			'simple_course_creator' 
+		);
+		add_settings_field( 
+			'display_position', 
+			__( 'Course List Position', 'scc'), 
+			array( $this, 'course_list_position' ), 
+			'simple_course_creator', 
+			'course_display_settings' 
+		);
+		register_setting( 
+			'course_display_settings', 
+			'display_position', 
+			array( $this, 'save_position' ) 
+		); 
+	}
+	
+	
+	/**
+	 * create the section for course display
+	 *
+	 * @since 1.0.0
+	 */
+	public function course_display_settings() {
+		echo '<p>' . __( 'These settings control the front-end display of the post listing container inside of posts that are part of courses.', 'scc' ) . '</p>';
+	}
+	
+	
+	/**
+	 * create course position option
+	 *
+	 * @since 1.0.0
+	 */
+	public function course_list_position() {
+		$options = get_option( 'course_display_settings' );
+		?>
+	    <select id="display_position" name="course_display_settings[display_position]">
+	    	<option value="above" <?php selected( $options['display_position'], 'above' ); ?>><?php _e( 'Above Content', 'scc' ); ?></option> 
+	    	<option value="below" <?php selected( $options['display_position'], 'below' ); ?>><?php _e( 'Below Content', 'scc' ); ?></option>
+	    	<option value="both" <?php selected( $options['display_position'], 'both' ); ?>><?php _e( 'Above & Below Content', 'scc' ); ?></option> 
+	    </select>
+	    <?php
+	}
+	
+	
+	/**
+	 * validate position setting
+	 *
+	 * @since 1.0.0
+	 */
+	public function save_position( $input ) {
+	}
+	
+	
+	/**
 	 * output settings page
 	 *
 	 * @since 1.0.0
@@ -56,22 +122,19 @@ class SCC_Settings_Page {
 					<a href="?page=simple_course_creator&tab=simple_course_creator_info" class="nav-tab <?php echo $active_tab == 'simple_course_creator_info' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Info', 'scc' ); ?></a>
 				</h2>
 				
-				<?php if ( $active_tab == 'simple_course_creator' ) : ?>
-					<form method="post" action="options.php">
-						<?php settings_fields( '' ); ?>
-						<?php do_settings_sections( '' ); ?>
-						<?php echo "Settings"; ?>
-					</form>
-				<?php elseif ( $active_tab == 'simple_course_creator_info' ) : ?>
-					<form method="post" action="options.php">
-						<?php settings_fields( '' ); ?>
-						<?php do_settings_sections( '' ); ?>
-						<?php echo "Information"; ?>
-					</form>
-				<?php endif; ?>
+				<form method="post" action="options.php">
+					<?php 
+					if ( $active_tab == 'simple_course_creator' ) :
+						settings_fields( 'course_display_settings' );
+						do_settings_sections( 'simple_course_creator' );
+						submit_button();
+					elseif ( $active_tab == 'simple_course_creator_info' ) :
+						echo '<p>Just a little bit of information.</p>';
+					endif;
+					?>
+				</form>
 			</div>
 		<?php
 	}
 }
-
 new SCC_Settings_Page();

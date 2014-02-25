@@ -69,6 +69,9 @@ class Simple_Course_Creator {
 
 		// load text domain
 		add_action( 'init', array( $this, 'load_textdomain' ) );
+	
+		// load admin scripts and styles
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_assets' ) );
 		
 		// require additional plugin files
 		$this->includes();
@@ -82,6 +85,22 @@ class Simple_Course_Creator {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( 'scc', false, SCC_DIR . "languages" );
+	}
+
+
+	/** 
+	 * Enqueue back-end scripts and styles
+	 *
+	 * @since 1.0.0
+	 */
+	public function admin_assets() {
+		
+		// admin page CSS
+		wp_register_style( 'scc_admin_style', SCC_URL . 'inc/assets/css/admin-style.css' );
+		
+		// only load styles on SCC admin pages
+		if ( 'settings_page_simple_course_creator' == get_current_screen()->id )
+			wp_enqueue_style( 'scc_admin_style' );
 	}
 	
 	
