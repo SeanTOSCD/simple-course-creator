@@ -1,9 +1,5 @@
 <?php
 /**
- * main settings page class
- */
-
-/**
  * settings page class
  *
  * @since 1.0.0

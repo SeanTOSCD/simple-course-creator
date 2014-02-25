@@ -1,9 +1,5 @@
 <?php
 /**
- * display post list class
- */
-
-/**
  * SCC_Post_Listing class
  *
  * @since 1.0.0

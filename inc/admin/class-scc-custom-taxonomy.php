@@ -1,9 +1,5 @@
 <?php
 /**
- * setup taxonomy and related functionality
- */
-
-/**
  * SCC_Custom_Taxonomy class
  *
  * @since 1.0.0
