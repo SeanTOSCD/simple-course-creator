@@ -85,12 +85,12 @@ class SCC_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function course_list_position() {
-		$options = get_option( 'course_display_settings' );
+		$options = get_option( 'display_position' );
 		?>
-	    <select id="display_position" name="course_display_settings[display_position]">
-	    	<option value="above" <?php selected( $options['display_position'], 'above' ); ?>><?php _e( 'Above Content', 'scc' ); ?></option> 
-	    	<option value="below" <?php selected( $options['display_position'], 'below' ); ?>><?php _e( 'Below Content', 'scc' ); ?></option>
-	    	<option value="both" <?php selected( $options['display_position'], 'both' ); ?>><?php _e( 'Above & Below Content', 'scc' ); ?></option> 
+	    <select id="display_position" name="display_position[list_position]">
+	    	<option value="above" <?php selected( $options['list_position'], 'above' ); ?>><?php _e( 'Above Content', 'scc' ); ?></option> 
+	    	<option value="below" <?php selected( $options['list_position'], 'below' ); ?>><?php _e( 'Below Content', 'scc' ); ?></option>
+	    	<option value="both" <?php selected( $options['list_position'], 'both' ); ?>><?php _e( 'Above & Below Content', 'scc' ); ?></option> 
 	    </select>
 	    <?php
 	}
@@ -102,6 +102,7 @@ class SCC_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function save_position( $input ) {
+		return $input;
 	}
 	
 	
