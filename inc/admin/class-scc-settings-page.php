@@ -28,13 +28,7 @@ class SCC_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function settings_menu() {
-		add_options_page( 
-			SCC_NAME, 
-			__( 'Course Settings', 'scc' ), 
-			'manage_options', 
-			'simple_course_creator', 
-			array( $this, 'settings_page' ) 
-		);
+		add_options_page( SCC_NAME, __( 'Course Settings', 'scc' ), 'manage_options', 'simple_course_creator', array( $this, 'settings_page' ) );
 	}
 	
 	
@@ -44,24 +38,11 @@ class SCC_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function register_settings() {
-		add_settings_section( 
-			'course_display_settings', 
-			__( 'Course Display Settings', 'scc' ), 
-			array( $this, 'course_display_settings' ), 
-			'simple_course_creator' 
-		);
-		add_settings_field( 
-			'display_position', 
-			__( 'Course List Position', 'scc'), 
-			array( $this, 'course_list_position' ), 
-			'simple_course_creator', 
-			'course_display_settings' 
-		);
-		register_setting( 
-			'course_display_settings', 
-			'display_position', 
-			array( $this, 'save_position' ) 
-		); 
+	
+		add_settings_section( 'course_display_settings', __( 'Course Container Display Settings', 'scc' ), array( $this, 'course_display_settings' ), 'simple_course_creator' );
+		
+		add_settings_field( 'display_position', __( 'Course Container Position', 'scc'), array( $this, 'course_list_position' ), 'simple_course_creator', 'course_display_settings' );
+		register_setting( 'course_display_settings', 'display_position', array( $this, 'save_position' ) ); 
 	}
 	
 	
@@ -82,11 +63,17 @@ class SCC_Settings_Page {
 	 */
 	public function course_list_position() {
 		$options = get_option( 'display_position' );
+		$course_container = array(
+			'above'	=> array( 'value' => 'above', 'desc' => __( 'Above Content', 'scc' ) ),
+			'below'	=> array( 'value' => 'below', 'desc' => __( 'Below Content', 'scc' ) ),
+			'both'	=> array( 'value' => 'both', 'desc' => __( 'Above & Below Content', 'scc' ) ),
+			'hide'	=> array( 'value' => 'hide', 'desc' => __( 'Hide Course Container', 'scc' ) ),
+		);
 		?>
 	    <select id="display_position" name="display_position[list_position]">
-	    	<option value="above" <?php selected( $options['list_position'], 'above' ); ?>><?php _e( 'Above Content', 'scc' ); ?></option> 
-	    	<option value="below" <?php selected( $options['list_position'], 'below' ); ?>><?php _e( 'Below Content', 'scc' ); ?></option>
-	    	<option value="both" <?php selected( $options['list_position'], 'both' ); ?>><?php _e( 'Above & Below Content', 'scc' ); ?></option> 
+	    	<?php foreach ( $course_container as $c ) : ?>
+		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['list_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
+		    <?php endforeach; ?>
 	    </select>
 	    <?php
 	}
@@ -98,6 +85,15 @@ class SCC_Settings_Page {
 	 * @since 1.0.0
 	 */
 	public function save_position( $input ) {
+		$options = get_option( 'display_position' );
+		
+		// display full course above content by default
+		if ( ! isset( $input['list_position'] ) ) :
+			$input['list_position'] == 'above';
+		else : 
+			$input['list_position'] == $options['list_position'];
+		endif;
+			
 		return $input;
 	}
 	
@@ -110,15 +106,12 @@ class SCC_Settings_Page {
 	public function settings_page() {
 		?>
 			<div class="wrap">
-				<h2><?php _e( SCC_NAME . ' Settings', 'scc' ); ?></h2>
-				
+				<h2><?php echo SCC_NAME . __( ' Settings', 'scc' ); ?></h2>
 				<?php $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'simple_course_creator'; ?>
-		
 				<h2 class="nav-tab-wrapper">
-					<a href="?page=simple_course_creator&tab=simple_course_creator" class="nav-tab <?php echo $active_tab == 'simple_course_creator' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'scc' ); ?></a>
-					<a href="?page=simple_course_creator&tab=simple_course_creator_info" class="nav-tab <?php echo $active_tab == 'simple_course_creator_info' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Info', 'scc' ); ?></a>
+					<a href="?page=simple_course_creator&tab=simple_course_creator" class="nav-tab <?php echo $active_tab == 'simple_course_creator' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Display', 'scc' ); ?></a>
+					<a href="?page=simple_course_creator&tab=simple_course_creator_info" class="nav-tab <?php echo $active_tab == 'simple_course_creator_info' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Information', 'scc' ); ?></a>
 				</h2>
-				
 				<form method="post" action="options.php">
 					<?php 
 					if ( $active_tab == 'simple_course_creator' ) :
@@ -126,7 +119,27 @@ class SCC_Settings_Page {
 						do_settings_sections( 'simple_course_creator' );
 						submit_button();
 					elseif ( $active_tab == 'simple_course_creator_info' ) :
-						echo '<p>Just a little bit of information.</p>';
+						?>
+							<h3><?php echo SCC_NAME . __( ' Information', 'scc' ); ?></h3>
+							<p class="plugin-description"><?php echo __( 'Thanks for using ', 'scc' ) . SCC_NAME . __( '. This plugin allows you to easily group your posts into series called "Courses." Courses behave similarly to categories and tags. However, courses will display a course container in the content of posts within a given course.', 'scc' ); ?></p> 
+							<p class="plugin-description"><?php echo __( 'The container displays a numbered list of all posts in that course, including the current post which is the only one not linked. Using the course title and description fields when creating new courses, you can customize the copy for your course containers on a per-course basis.', 'scc' ); ?></p>
+							<table class="form-table">
+								<tbody>
+									<tr>
+										<th scope="row"><?php _e( 'Bugs & Contributions', 'scc' ); ?></th>
+										<td><p><?php echo __( 'If you have any issues that you know how to fix, feel free to ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' .  __( 'fork the repo on Github', 'scc' ) . '</a>' .  __( ' and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. If you are not a developer and you need support, you can ', 'scc' ) . '<a href="http://buildwpyourself.com/contact/" target="_blank">' . __( 'get in contact here', 'scc' ) . '</a>.'; ?></p></td>
+									</tr>
+									<tr>
+										<th scope="row"><?php _e( 'License Information', 'scc' ); ?></th>
+										<td><p><?php echo __( 'This plugin, like WordPress, is licensed under the GPL.', 'scc' ); ?></p></td>
+									</tr>
+									<tr>
+										<th scope="row"><?php _e( 'Plugin Contributors', 'scc' ); ?></th>
+										<td><p><?php echo '<a href="https://github.com/sdavis2702/simple-course-creator/graphs/contributors" target="_blank">' . __( 'View all contributors', 'scc' ) . '</a>. ' . __( 'Fork the repo and submit a pull request if you would like to pitch in.', 'scc' ); ?></p></td>
+									</tr>
+								</tbody>
+							</table>
+						<?php
 					endif;
 					?>
 				</form>
