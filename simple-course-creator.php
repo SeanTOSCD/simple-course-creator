@@ -56,7 +56,7 @@ class Simple_Course_Creator {
 	public function __construct() {
 		
 		// define plugin name
-		define( 'SCC_NAME', 'Simple Course Creator' );
+		define( 'SCC_NAME', __( 'Simple Course Creator', 'scc' ) );
 		
 		// define plugin version
 		define( 'SCC_VERSION', '1.0.0' );
