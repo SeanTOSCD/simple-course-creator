@@ -1,8 +1,6 @@
 Simple Course Creator
 =====================
 
-This WordPress plugin is **still in its development stages** but is functional and safe to use.
-
 Simple Course Creator is designed to easily link posts together in a series and output that series list in the content of each included post.
 
 ### How It Works
