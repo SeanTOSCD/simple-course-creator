@@ -33,7 +33,7 @@ Styles are kept to a minimum so theme styles are inherited as much as possible.
 
 You are more than welcome to override the basic default styles or HTML template responsible for displaying the course container.
 
-If you only want to **edit** CSS styles, you're better off using your own theme's stylesheet and simply writing strong CSS.
+If you only want to edit a few CSS styles, you're better off using your own theme's stylesheet and simply writing stronger CSS.
 
 If you would like to override the actual CSS file as well as the template for displaying the course container, you can easily do so by creating a folder in the root of your theme called `scc_templates` and copying any of the files you'd like from the plugin's `inc/scc_templates` folder into your new theme folder. 
 
