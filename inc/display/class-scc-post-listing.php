@@ -43,8 +43,9 @@ class SCC_Post_Listing {
 	 *
 	 * @since 1.0.0
 	 */
-	public function post_listing( $content ) {
+	public function post_listing( $content, $input ) {
 		global $post;
+		$options = get_option( 'display_position' );
 		if ( 'post' !== $post->post_type || ! is_main_query() )
 			return $content;
 		$course = $this->retrieve_course( $post->ID );
@@ -108,8 +109,23 @@ class SCC_Post_Listing {
 				</div>
 			</div>
 		<?php endif;
-		$post_listing = ob_get_clean();		
-		$content = $post_listing . $content . $post_listing;
+		$post_listing = ob_get_clean();	
+		
+		// display full course based on display settings
+		switch ( $options['list_position'] ) :
+			case 'below':
+				$content = $content . $post_listing;
+				break;
+			case 'both':
+				$content = $post_listing . $content . $post_listing;
+				break;
+			case 'hide':
+				$content = $content;
+				break;
+			default:
+				$content = $post_listing . $content;
+		endswitch;
+				
 		return $content;
 	}
 	
