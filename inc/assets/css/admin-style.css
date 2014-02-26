@@ -5,3 +5,6 @@
 .plugin-description {
 	max-width: 700px
 }
+.plugin-info td p {
+	margin: 4px 0 15px;
+}

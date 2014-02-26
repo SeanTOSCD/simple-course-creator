@@ -123,8 +123,16 @@ class SCC_Settings_Page {
 							<h3><?php echo SCC_NAME . __( ' Information', 'scc' ); ?></h3>
 							<p class="plugin-description"><?php echo __( 'Thanks for using ', 'scc' ) . SCC_NAME . __( '. This plugin allows you to easily group your posts into series called "Courses." Courses behave similarly to categories and tags. However, courses will display a course container in the content of posts within a given course.', 'scc' ); ?></p> 
 							<p class="plugin-description"><?php echo __( 'The container displays a numbered list of all posts in that course, including the current post which is the only one not linked. Using the course title and description fields when creating new courses, you can customize the copy for your course containers on a per-course basis.', 'scc' ); ?></p>
-							<table class="form-table">
+							<table class="form-table plugin-info">
 								<tbody>
+									<tr>
+										<th scope="row"><?php _e( 'Theme Overrides', 'scc' ); ?></th>
+										<td><p><?php echo __( 'You are more than welcome to override the basic default styles or HTML template responsible for displaying the course container.', 'scc' ); ?></p>
+											<p><?php echo __( 'If you only want to edit a few CSS styles, you&rsquo;re better off using your own theme&rsquo;s stylesheet and simply writing stronger CSS.', 'scc' ); ?></p>
+											<p><?php echo __( 'If you would like to override the actual CSS file as well as the template for displaying the course container, you can easily do so by creating a folder in the root of your theme called "scc_templates" and copying any of the files you&rsquo;d like from the plugin&rsquo;s "inc/scc_templates" folder into your new theme folder.', 'scc' ); ?></p>
+											<p><?php echo __( 'Your theme files will now completely override the plugin files.', 'scc' ); ?></p>
+											<p><?php echo __( 'Be sure to copy these files and not simply create new, empty ones. Even if they&rsquo;re empty, they&rsquo;ll still override.', 'scc' ); ?></p></td>
+									</tr>
 									<tr>
 										<th scope="row"><?php _e( 'Bugs & Contributions', 'scc' ); ?></th>
 										<td><p><?php echo __( 'If you have any issues that you know how to fix, feel free to ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' .  __( 'fork the repo on Github', 'scc' ) . '</a>' .  __( ' and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. If you are not a developer and you need support, you can ', 'scc' ) . '<a href="http://buildwpyourself.com/contact/" target="_blank">' . __( 'get in contact here', 'scc' ) . '</a>.'; ?></p></td>
