@@ -29,10 +29,6 @@ The series of posts will be hidden until you click a subtle link for displaying 
 
 Styles are kept to a minimum so theme styles are inherited as much as possible.
 
-#### Bugs and Contributions
-
-If you notice any mistakes, feel free to fork the repo and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. 
-
 #### Theme Overrides
 
 You are more than welcome to override the basic default styles or HTML template responsible for displaying the course container.
@@ -44,6 +40,10 @@ If you would like to override the actual CSS file as well as the template for di
 Your theme files will now completely override the plugin files.
 
 Be sure to copy these files and not simply create new, empty ones. Even if they're empty, they'll still override.
+
+#### Bugs and Contributions
+
+If you notice any mistakes, feel free to fork the repo and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. 
 
 #### License
 
