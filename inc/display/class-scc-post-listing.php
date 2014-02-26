@@ -43,72 +43,30 @@ class SCC_Post_Listing {
 	 *
 	 * @since 1.0.0
 	 */
-	public function post_listing( $content, $input ) {
+	public function post_listing( $content ) {
 		global $post;
 		$options = get_option( 'display_position' );
+		
 		if ( 'post' !== $post->post_type || ! is_main_query() )
 			return $content;
+			
 		$course = $this->retrieve_course( $post->ID );
+		
 		if ( ! $course )
 			return $content;
+			
 		wp_enqueue_script( 'scc-post-list-js' );
-
-		// build the post listing based on course
-		$args = array( 
-			'post_type'      => 'post',
-			'posts_per_page' => -1,
-			'fields'         => 'ids',
-			'no_found_rows'  => true,
-			'orderby'        => 'date',
-			'order'          => 'asc',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'course',
-					'field'    => 'slug',
-					'terms'    => $course->slug
-				)
-			)
-		);
-		$the_posts  = get_posts( $args );
-		$posts = 1;
-		foreach ( $the_posts as $post_id ) {
-			if ( $post_id == $post->ID ) {
-				break;
-			}
-			$posts ++;
-		}
-		ob_start(); 
-		if ( is_single() && sizeof( $the_posts ) > 1 ) :
-			$array = get_option( 'taxonomy_' . $course->term_id );
-			$post_list_title = $array['post_list_title'];
-			$course_description = term_description( $course->term_id, 'course' );
-			$full_course_text = apply_filters( 'full_course_text', __( 'full course', 'scc' ) );
-			?>
-			<div id="scc-wrap" class="scc-post-list">
-				<?php if ( '' != $post_list_title ) : ?>
-					<h3><?php echo $post_list_title; ?></h3>
-				<?php endif; ?>
-				<?php if ( $course_description != '' ) : ?>
-					<?php echo $course_description; ?>
-					<a href="#" class="scc-show-post-list"><?php echo $full_course_text; ?></a>
-				<?php endif; ?>				
-				<div class="scc-post-container">
-					<ol>
-						<?php foreach ( $the_posts as $key => $post_id ) : ?>
-							<li>
-								<?php 
-								if ( ! is_single( $post_id ) ) { 
-									echo '<a href="' . get_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
-								} else {
-									echo '<span class="scc-current-post">' . get_the_title( $post_id ) . '</span>';
-								}	
-								?>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-				</div>
-			</div>
-		<?php endif;
+		
+		ob_start(); 	
+			
+		// include the appropriate template file
+		$this->get_template( 'scc-output.php', array( 
+			'course'			=> $course, 
+			'description'		=> $course_description,
+			'course_posts'		=> $the_posts,
+			'posts'				=> $posts
+		) );
+		
 		$post_listing = ob_get_clean();	
 		
 		// display full course based on display settings
@@ -131,15 +89,68 @@ class SCC_Post_Listing {
 	
 
 	/**
-	 * setup stylesheet and script for post listing 
+	 * get and include template files
 	 *
 	 * @since 1.0.0
 	 */
-	public function frontend_styles() {
+	public function get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+		if ( $args && is_array($args) )
+			extract( $args );
+
+		include( $this->locate_template( $template_name, $template_path, $default_path ) );
+	}
+	
+
+	/**
+	 * locate a template and return the path for inclusion
+	 *
+	 * @since 1.0.0
+	 */
+	public function locate_template( $template_name, $template_path = '', $default_path = '' ) {
+		if ( ! $template_path )
+			$template_path = 'scc_templates';
+		if ( ! $default_path )
+			$default_path  = SCC_DIR . 'inc/scc_templates/';
+
+		// Look within passed path within the theme - this is priority
+		$template = locate_template(
+			array(
+				trailingslashit( $template_path ) . $template_name,
+				$template_name
+			)
+		);
+
+		// Get default template
+		if ( ! $template )
+			$template = $default_path . $template_name;
+
+		// Return what we found
+		return $template;
+	}
+	
+
+	/**
+	 * setup stylesheet and script for post listing 
+	 * 
+	 * @credits stylesheet hierarchy approach by Easy Digital Downloads
+	 * @since 1.0.0
+	 */
+	public function frontend_styles(  ) {
 		wp_register_script( 'scc-post-list-js', SCC_URL . 'inc/assets/js/scc-post-listing.js', array( 'jquery' ), SCC_VERSION, true );
-		wp_register_style( 'scc-post-listing-css', SCC_URL . 'inc/assets/css/scc-post-listing.css' );
+
+		$child_theme_scc_style = trailingslashit( get_stylesheet_directory() ) . 'scc_templates/scc.css';
+		$parent_theme_scc_style = trailingslashit( get_template_directory() ) . 'scc_templates/scc.css';
+		
+		if ( file_exists( $child_theme_scc_style ) ) :
+			$primary_style = trailingslashit( get_stylesheet_directory_uri() ) . 'scc_templates/scc.css';
+		elseif ( file_exists( $parent_theme_scc_style ) ) :
+			$primary_style = trailingslashit( get_template_directory_uri() ) . 'scc_templates/scc.css';
+		else :
+			$primary_style = SCC_URL . 'inc/scc_templates/scc.css';
+		endif;
+		
+		wp_register_style( 'scc-post-listing-css', $primary_style );
 		wp_enqueue_style( 'scc-post-listing-css' );
 	}
 }
-
 new SCC_Post_Listing();

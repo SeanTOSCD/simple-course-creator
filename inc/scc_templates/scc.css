@@ -1,3 +1,8 @@
+/**
+ * To edit, create a folder called "scc_templates" in the root of your theme 
+ * and COPY this file into it. It will override the plugin's CSS file.
+ */
+
 /* default post listing styles */
 .scc-post-list {
 	position: relative;
