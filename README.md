@@ -5,7 +5,7 @@ This WordPress plugin is **still in its development stages** but is functional a
 
 Simple Course Creator is designed to easily link posts together in a series and output that series list in the content of each included post.
 
-#### How It Works
+### How It Works
 
 Once activated, a new taxonomy is added to your Posts menu called "Courses." Courses are created just like categories and tags.
 
@@ -29,7 +29,7 @@ The series of posts will be hidden until you click a subtle link for displaying 
 
 Styles are kept to a minimum so theme styles are inherited as much as possible.
 
-#### Theme Overrides
+### Theme Overrides
 
 You are more than welcome to override the basic default styles or HTML template responsible for displaying the course container.
 
@@ -41,15 +41,15 @@ Your theme files will now completely override the plugin files.
 
 Be sure to copy these files and not simply create new, empty ones. Even if they're empty, they'll still override.
 
-#### Bugs and Contributions
+### Bugs and Contributions
 
 If you notice any mistakes, feel free to fork the repo and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. 
 
-#### License
+### License
 
 This plugin, like WordPress, is licensed under the GPL. Do what you want with it. I seriously don't care. 
 
-#### Developer
+### Developer
 
 I'm Sean. I created the [Volatyl Framework](http://volatylthemes.com) for WordPress. I write stuff on my [personal site](http://seandavis.co) and [SDavis Media](http://sdavismedia.com). Follow me on the [Twitter](http://sdvs.me/twitter) machine.
 
