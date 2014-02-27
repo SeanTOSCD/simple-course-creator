@@ -38,8 +38,8 @@ $course_description = term_description( $course->term_id, 'course' );
 		<?php endif; ?>
 		<?php if ( $course_description != '' ) : ?>
 			<?php echo $course_description; ?>
-			<a href="#" class="scc-show-post-list"><?php _e( 'full course', 'scc' ); ?></a>
 		<?php endif; ?>				
+		<a href="#" class="scc-show-post-list"><?php _e( 'full course', 'scc' ); ?></a>
 		<div class="scc-post-container">
 			<ol>
 				<?php foreach ( $the_posts as $key => $post_id ) : ?>
