@@ -34,7 +34,7 @@ $course_description = term_description( $course->term_id, 'course' );
 <?php if ( is_single() && sizeof( $the_posts ) > 1 ) : ?>
 	<div id="scc-wrap" class="scc-post-list">
 		<?php if ( $post_list_title != '' ) : ?>
-			<h3><?php echo $post_list_title; ?></h3>
+			<h3 class="scc-post-list-title"><?php echo $post_list_title; ?></h3>
 		<?php endif; ?>
 		<?php if ( $course_description != '' ) : ?>
 			<?php echo $course_description; ?>
