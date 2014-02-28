@@ -16,10 +16,13 @@
 .scc-post-list p:last-of-type {
 	margin: 0 1em 0 0;
 }
-.scc-post-list ol {
-	margin: 1.5em 0 0 1.5em;
+.scc-post-list ol,
+.scc-post-list ul {
+	padding-top: 1.5em;
+	margin: 0;
 }
 .scc-post-list li {
+	list-style-position: inside;
 	padding: .5em 0 0 0;
 }
 .scc-post-list li:first-child {
@@ -27,6 +30,8 @@
 }
 .scc-post-list li:last-child {
 	padding-bottom: 0;
+}
+.scc-list-item {
 }
 .scc-post-list a {
 }

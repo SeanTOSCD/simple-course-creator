@@ -23,6 +23,9 @@ endforeach;
 $array = get_option( 'taxonomy_' . $course->term_id );
 $post_list_title = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
+$list_option = get_option( 'list_type' );
+$list_container = $list_option[ 'list_style_type' ] == 'ordered' ? 'ol' : 'ul';
+$no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: none;"' : '';
 /**
  * To edit, create a folder called "scc_templates" in the root of your theme 
  * and COPY this file into it. It will override the default plugin template.
@@ -41,19 +44,21 @@ $course_description = term_description( $course->term_id, 'course' );
 		<?php endif; ?>				
 		<a href="#" class="scc-show-post-list"><?php _e( 'full course', 'scc' ); ?></a>
 		<div class="scc-post-container">
-			<ol>
+			<<?php echo $list_container; ?> class="scc-posts">
 				<?php foreach ( $the_posts as $key => $post_id ) : ?>
-					<li>
-						<?php 
-						if ( ! is_single( $post_id ) ) { 
-							echo '<a href="' . get_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
-						} else {
-							echo '<span class="scc-current-post">' . get_the_title( $post_id ) . '</span>';
-						}	
-						?>
+					<li <?php echo $no_list; ?>>
+						<span class="scc-list-item">
+							<?php 
+							if ( ! is_single( $post_id ) ) { 
+								echo '<a href="' . get_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
+							} else {
+								echo '<span class="scc-current-post">' . get_the_title( $post_id ) . '</span>';
+							}	
+							?>
+						</span>
 					</li>
 				<?php endforeach; ?>
-			</ol>
+			</<?php echo $list_container; ?>>
 		</div>
 	</div>
 <?php endif; ?>
