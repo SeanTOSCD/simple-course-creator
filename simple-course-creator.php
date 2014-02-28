@@ -3,7 +3,7 @@
  * Plugin Name: Simple Course Creator
  * Plugin URI: simplecoursecreator.com
  * Description: Allows you to easily create and manage courses in your WordPress website.
- * Version: 1.0.0
+ * Version: 1.0.2
  * Author: Sean Davis
  * Author URI: http://sdavismedia.com
  * License: GPL2
@@ -32,7 +32,7 @@
  * @category Core
  * @author Sean Davis
  * @license GNU GENERAL PUBLIC LICENSE Version 2 - /license.txt
- * @version 1.0.0
+ * @version 1.0.2
  */
 
 
@@ -59,7 +59,7 @@ class Simple_Course_Creator {
 		define( 'SCC_NAME', __( 'Simple Course Creator', 'scc' ) );
 		
 		// define plugin version
-		define( 'SCC_VERSION', '1.0.0' );
+		define( 'SCC_VERSION', '1.0.2' );
 		
 		// define plugin directory
 		define( 'SCC_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
