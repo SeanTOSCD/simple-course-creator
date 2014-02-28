@@ -85,7 +85,7 @@ class SCC_Settings_Page {
 		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['list_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
 		    <?php endforeach; ?>
 	    </select>
-	    <label><?php _e( 'Choose where to display your post listing.', 'scc' ); ?></label>
+	    <label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
 	    <?php
 	}
 	
@@ -111,7 +111,7 @@ class SCC_Settings_Page {
 		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_style_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
 		    <?php endforeach; ?>
 	    </select>
-	    <label><?php _e( 'Choose your preferred style of list.', 'scc' ); ?></label>
+	    <label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
 	    <?php
 	}
 	
