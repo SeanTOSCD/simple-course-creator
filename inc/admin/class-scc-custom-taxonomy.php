@@ -199,6 +199,7 @@ class SCC_Custom_Taxonomy {
 	 * From both the two above methods, save any edits made to
 	 * the "Post Listing Title" field.
 	 *
+	 * @used_by course_meta_title() and edit_course_meta_title()
 	 * @since 1.0.0
 	 */
 	public function save_course_meta_title( $term_id ) {
@@ -238,7 +239,7 @@ class SCC_Custom_Taxonomy {
 	/**
 	 * Output admin column values
 	 *
-	 * One the manage posts screen beneath the header added in the above
+	 * On the manage posts screen beneath the header added in the columns()
 	 * method, output values for each post based on whether or not it is
 	 * assigned to a course. If so, output the course name. If not, 
 	 * output a message.
@@ -282,5 +283,4 @@ class SCC_Custom_Taxonomy {
 		<?php
 	}
 }
-
 new SCC_Custom_Taxonomy();

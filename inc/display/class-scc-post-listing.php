@@ -17,7 +17,7 @@ class SCC_Post_Listing {
 		// display post listing in content
 		add_filter( 'the_content', array( $this, 'post_listing' ) );
 		
-		// load default post listing stylesheet
+		// load the correct post listing stylesheet based on hierarchy
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 	}
 	
@@ -41,12 +41,14 @@ class SCC_Post_Listing {
 	/**
 	 * add post listing to content
 	 *
+	 * @uses retrieve_course()
 	 * @since 1.0.0
 	 */
 	public function post_listing( $content ) {
 		global $post;
 		$options = get_option( 'display_position' );
 		
+		// only display the post listing for WordPress posts
 		if ( 'post' !== $post->post_type || ! is_main_query() )
 			return $content;
 			
@@ -59,7 +61,7 @@ class SCC_Post_Listing {
 		
 		ob_start(); 	
 			
-		// include the appropriate template file
+		// include *the appropriate* template file
 		$this->get_template( 'scc-output.php', array( 
 			'course'			=> $course, 
 			'description'		=> $course_description,
@@ -69,7 +71,7 @@ class SCC_Post_Listing {
 		
 		$post_listing = ob_get_clean();	
 		
-		// display full course based on display settings
+		// display full course based on plugin display settings
 		switch ( $options['list_position'] ) :
 			case 'below':
 				$content = $content . $post_listing;
@@ -91,6 +93,7 @@ class SCC_Post_Listing {
 	/**
 	 * get and include template files
 	 *
+	 * @uses locate_template()
 	 * @since 1.0.0
 	 */
 	public function get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
@@ -104,6 +107,7 @@ class SCC_Post_Listing {
 	/**
 	 * locate a template and return the path for inclusion
 	 *
+	 * @used_by get_template()
 	 * @since 1.0.0
 	 */
 	public function locate_template( $template_name, $template_path = '', $default_path = '' ) {
@@ -137,10 +141,15 @@ class SCC_Post_Listing {
 	 */
 	public function frontend_styles(  ) {
 		wp_register_script( 'scc-post-list-js', SCC_URL . 'inc/assets/js/scc-post-listing.js', array( 'jquery' ), SCC_VERSION, true );
-
+		
+		// if the active theme has a properly named CSS file in the correct
+		// location within the theme, store it in a variable
 		$child_theme_scc_style = trailingslashit( get_stylesheet_directory() ) . 'scc_templates/scc.css';
 		$parent_theme_scc_style = trailingslashit( get_template_directory() ) . 'scc_templates/scc.css';
 		
+		// check to see if the above variables actually had files
+		// if so, store those variables in a new variable
+		// $primary_style will only hold one value based on which files exist
 		if ( file_exists( $child_theme_scc_style ) ) :
 			$primary_style = trailingslashit( get_stylesheet_directory_uri() ) . 'scc_templates/scc.css';
 		elseif ( file_exists( $parent_theme_scc_style ) ) :
@@ -149,6 +158,7 @@ class SCC_Post_Listing {
 			$primary_style = SCC_URL . 'inc/scc_templates/scc.css';
 		endif;
 		
+		// register and enqueue the appropriate CSS file based on above checks
 		wp_register_style( 'scc-post-listing-css', $primary_style );
 		wp_enqueue_style( 'scc-post-listing-css' );
 	}
