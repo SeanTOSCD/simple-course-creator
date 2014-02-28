@@ -47,7 +47,7 @@ class SCC_Settings_Page {
 		register_setting( 'course_display_settings', 'display_position', array( $this, 'save_settings' ) ); 
 		
 		// add option for choosing the list style (ul, ol, none)
-		add_settings_field( 'list_type', __( 'List Style (ol, ul, none)', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
+		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
 		register_setting( 'course_display_settings', 'list_type', array( $this, 'save_settings' ) ); 
 	}
 	
@@ -85,6 +85,7 @@ class SCC_Settings_Page {
 		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['list_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
 		    <?php endforeach; ?>
 	    </select>
+	    <label><?php _e( 'Choose where to display your post listing.', 'scc' ); ?></label>
 	    <?php
 	}
 	
@@ -102,7 +103,7 @@ class SCC_Settings_Page {
 		$list_type = array(
 			'ordered'	=> array( 'value' => 'ordered', 'desc' => __( 'Numbered List', 'scc' ) ),
 			'unordered'	=> array( 'value' => 'unordered', 'desc' => __( 'Bullet Points', 'scc' ) ),
-			'none'		=> array( 'value' => 'none', 'desc' => __( 'Plain Elements', 'scc' ) ),
+			'none'		=> array( 'value' => 'none', 'desc' => __( 'No List Indicator', 'scc' ) ),
 		);
 		?>
 	    <select id="list_type" name="list_type[list_style_type]">
@@ -110,6 +111,7 @@ class SCC_Settings_Page {
 		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_style_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
 		    <?php endforeach; ?>
 	    </select>
+	    <label><?php _e( 'Choose your preferred style of list.', 'scc' ); ?></label>
 	    <?php
 	}
 	
