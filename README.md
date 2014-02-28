@@ -27,6 +27,18 @@ The series of posts will be hidden until you click a subtle link for displaying 
 
 Styles are kept to a minimum so theme styles are inherited as much as possible.
 
+### Simple Course Creator Settings
+
+Simple Course Creator comes with a few very simple options.
+
+Choose to display your course containers above post content, below post content, both above and below post content, or do not display it at all while still preserving the course configuration.
+
+You may also choose your course list style type. They can be displayed as a numbered list, a bulleted list, or a list with no list indicator at all... simply stacked like paragraphs.
+
+![Simple Course Creator Settings](http://seandavis.co/wp-content/uploads/2014/02/simple-course-creator-settings.png)
+
+Expect more options in the future.
+
 ### Theme Overrides
 
 You are more than welcome to override the basic default styles or HTML template responsible for displaying the course container.
