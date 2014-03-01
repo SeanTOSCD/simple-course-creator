@@ -4,44 +4,44 @@
  */
 
 /* default post listing styles */
-.scc-post-list {
+#scc-wrap {
 	position: relative;
 	padding: 1em;
 	border: 1px solid #dadada;
 	margin: 0 0 1.5em;
 }
-.scc-post-container {
+#scc-wrap .scc-post-container {
 	display: none;
 }
-.scc-post-list p:last-of-type {
+#scc-wrap p:last-of-type {
 	margin: 0 1em 0 0;
 }
-.scc-post-list ol,
-.scc-post-list ul {
-	padding-top: 1.5em;
+#scc-wrap ol,
+#scc-wrap ul {
+	padding: 1.5em 0 0;
 	margin: 0;
 }
-.scc-post-list li {
+#scc-wrap li {
 	list-style-position: inside;
 	padding: .5em 0 0 0;
 }
-.scc-post-list li:first-child {
+#scc-wrap li:first-child {
 	padding-top: 0;
 }
-.scc-post-list li:last-child {
+#scc-wrap li:last-child {
 	padding-bottom: 0;
 }
-.scc-list-item {
+#scc-wrap .scc-list-item {
 }
-.scc-post-list a {
+#scc-wrap a {
 }
-.scc-current-post {
+#scc-wrap .scc-current-post {
 	font-weight: bold;
 }
-.scc-post-list h3 {
+#scc-wrap h3 {
 	margin-top: 0;
 }
-.scc-post-list .scc-show-post-list {
+#scc-wrap .scc-show-post-list {
 	position: absolute;
 		right: 10px;
 		bottom: 2px;

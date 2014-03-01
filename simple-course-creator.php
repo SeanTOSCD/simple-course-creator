@@ -10,7 +10,7 @@
  * Requires at least: 3.8
  * Tested up to: 3.8
  * Text Domain: scc
- * Domain Path: /languages/
+ * Domain Path: /inc/languages/
  * 
  * This plugin is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as 
@@ -99,8 +99,9 @@ class Simple_Course_Creator {
 		wp_register_style( 'scc_admin_style', SCC_URL . 'inc/assets/css/admin-style.css' );
 		
 		// only load styles on SCC admin pages
-		if ( 'settings_page_simple_course_creator' == get_current_screen()->id )
+		if ( 'settings_page_simple_course_creator' == get_current_screen()->id ) {
 			wp_enqueue_style( 'scc_admin_style' );
+		}
 	}
 	
 	

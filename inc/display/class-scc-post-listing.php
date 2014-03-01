@@ -48,15 +48,18 @@ class SCC_Post_Listing {
 		global $post;
 		$options = get_option( 'display_position' );
 		
-		// only display the post listing for WordPress posts
-		if ( 'post' !== $post->post_type || ! is_main_query() )
+		// only display the post listing on WordPress posts
+		if ( 'post' !== $post->post_type || ! is_main_query() ) {
 			return $content;
-			
+		}	
+		
 		$course = $this->retrieve_course( $post->ID );
 		
-		if ( ! $course )
+		// if there's no course, just display the content
+		if ( ! $course ) {
 			return $content;
-			
+		}	
+		
 		wp_enqueue_script( 'scc-post-list-js' );
 		
 		ob_start(); 	
@@ -72,7 +75,7 @@ class SCC_Post_Listing {
 		$post_listing = ob_get_clean();	
 		
 		// display full course based on plugin display settings
-		switch ( $options['list_position'] ) :
+		switch ( $options['list_position'] ) {
 			case 'below':
 				$content = $content . $post_listing;
 				break;
@@ -84,8 +87,7 @@ class SCC_Post_Listing {
 				break;
 			default:
 				$content = $post_listing . $content;
-		endswitch;
-				
+		}		
 		return $content;
 	}
 	
@@ -97,9 +99,9 @@ class SCC_Post_Listing {
 	 * @since 1.0.0
 	 */
 	public function get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
-		if ( $args && is_array($args) )
+		if ( $args && is_array($args) ) {
 			extract( $args );
-
+		}
 		include( $this->locate_template( $template_name, $template_path, $default_path ) );
 	}
 	
@@ -111,10 +113,12 @@ class SCC_Post_Listing {
 	 * @since 1.0.0
 	 */
 	public function locate_template( $template_name, $template_path = '', $default_path = '' ) {
-		if ( ! $template_path )
+		if ( ! $template_path ) {
 			$template_path = 'scc_templates';
-		if ( ! $default_path )
+		}
+		if ( ! $default_path ) {
 			$default_path  = SCC_DIR . 'inc/scc_templates/';
+		}
 
 		// Look within passed path within the theme - this is priority
 		$template = locate_template(
@@ -125,10 +129,9 @@ class SCC_Post_Listing {
 		);
 
 		// Get default template
-		if ( ! $template )
+		if ( ! $template ) {
 			$template = $default_path . $template_name;
-
-		// Return what we found
+		}
 		return $template;
 	}
 	
@@ -150,17 +153,18 @@ class SCC_Post_Listing {
 		// check to see if the above variables actually had files
 		// if so, store those variables in a new variable
 		// $primary_style will only hold one value based on which files exist
-		if ( file_exists( $child_theme_scc_style ) ) :
+		if ( file_exists( $child_theme_scc_style ) ) {
 			$primary_style = trailingslashit( get_stylesheet_directory_uri() ) . 'scc_templates/scc.css';
-		elseif ( file_exists( $parent_theme_scc_style ) ) :
+		} elseif ( file_exists( $parent_theme_scc_style ) ) {
 			$primary_style = trailingslashit( get_template_directory_uri() ) . 'scc_templates/scc.css';
-		else :
+		} else {
 			$primary_style = SCC_URL . 'inc/scc_templates/scc.css';
-		endif;
+		}
 		
 		// register and enqueue the appropriate CSS file based on above checks
-		wp_register_style( 'scc-post-listing-css', $primary_style );
-		wp_enqueue_style( 'scc-post-listing-css' );
+		if ( is_single() ) {
+			wp_enqueue_style( 'scc-post-listing-css', $primary_style );
+		}
 	}
 }
 new SCC_Post_Listing();

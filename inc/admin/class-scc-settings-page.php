@@ -81,9 +81,9 @@ class SCC_Settings_Page {
 		);
 		?>
 	    <select id="display_position" name="display_position[list_position]">
-	    	<?php foreach ( $course_container as $c ) : // display options from $course_container array ?>
+	    	<?php foreach ( $course_container as $c ) { // display options from $course_container array ?>
 		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['list_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
-		    <?php endforeach; ?>
+		    <?php } ?>
 	    </select>
 	    <label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
 	    <?php
@@ -107,9 +107,9 @@ class SCC_Settings_Page {
 		);
 		?>
 	    <select id="list_type" name="list_type[list_style_type]">
-	    	<?php foreach ( $list_type as $l ) : // display options from $list_type array ?>
+	    	<?php foreach ( $list_type as $l ) { // display options from $list_type array ?>
 		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_style_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
-		    <?php endforeach; ?>
+		    <?php } ?>
 	    </select>
 	    <label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
 	    <?php
@@ -126,20 +126,19 @@ class SCC_Settings_Page {
 		
 		// display full course above content by default
 		$position = get_option( 'display_position' );
-		if ( ! isset( $input['list_position'] ) ) :
+		if ( ! isset( $input['list_position'] ) ) {
 			$input['list_position'] == 'above';
-		else : 
+		} else {
 			$input['list_position'] == $position['list_position'];
-		endif;
+		}
 		
 		// display ordered list by default
 		$list_type = get_option( 'list_type' );
-		if ( ! isset( $input['list_style_type'] ) ) :
+		if ( ! isset( $input['list_style_type'] ) ) {
 			$input['list_style_type'] == 'ordered';
-		else : 
+		} else {
 			$input['list_style_type'] == $list_type['list_style_type'];
-		endif;
-			
+		}	
 		return $input;
 	}
 	
@@ -165,11 +164,11 @@ class SCC_Settings_Page {
 				</h2>
 				<form method="post" action="options.php">
 					<?php 
-					if ( $active_tab == 'simple_course_creator' ) :
+					if ( $active_tab == 'simple_course_creator' ) {
 						settings_fields( 'course_display_settings' );
 						do_settings_sections( 'simple_course_creator' );
 						submit_button();
-					elseif ( $active_tab == 'simple_course_creator_info' ) :
+					} elseif ( $active_tab == 'simple_course_creator_info' ) {
 						?>
 							<h3><?php echo SCC_NAME . __( ' Information', 'scc' ); ?></h3>
 							<p class="plugin-description"><?php echo __( 'Thanks for using ', 'scc' ) . SCC_NAME . __( '. This plugin allows you to easily group your posts into series called "Courses." Courses behave similarly to categories and tags. However, courses will display a course container in the content of posts within a given course.', 'scc' ); ?></p> 
@@ -207,7 +206,7 @@ class SCC_Settings_Page {
 								</tbody>
 							</table>
 						<?php
-					endif;
+					}
 					?>
 				</form>
 			</div>

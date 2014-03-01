@@ -203,7 +203,6 @@ class SCC_Custom_Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function save_course_meta_title( $term_id ) {
-	
 		if ( isset( $_POST['term_meta'] ) ) {
 			$course_id = $term_id;
 			$term_meta = get_option( "taxonomy_$course_id" );
@@ -224,8 +223,9 @@ class SCC_Custom_Taxonomy {
 	 * @since 1.0.0
 	 */
 	public function columns( $columns ) {
-		if ( ! is_array( $columns ) )
+		if ( ! is_array( $columns ) ) {
 			$new_columns = array();
+		}
 		foreach ( $columns as $key => $column ) {
 			$new_columns[ $key ] = $column;
 			if ( 'categories' == $key ) {
@@ -267,12 +267,14 @@ class SCC_Custom_Taxonomy {
 	 */
 	public function course_posts() {
 		global $typenow, $wp_query;
-	    if ( $typenow != 'post' )
+	    if ( $typenow != 'post' ) {
 	    	return;
+	    }
 	    $current_course = isset( $_REQUEST['course'] ) ? sanitize_text_field( $_REQUEST['course'] ) : '';
 	    $all_courses = get_terms( 'course', array( 'hide_empty' => true, 'orderby' => 'name' ) );
-	    if ( empty( $all_courses ) )
+	    if ( empty( $all_courses ) ) {
 	    	return;
+	    }
 	    ?>
 	    <select name="course">
 			<option value=""><?php _e( 'Show all courses', 'scc' ) ?></option>

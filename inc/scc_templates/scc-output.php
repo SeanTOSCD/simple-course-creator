@@ -14,12 +14,12 @@ $the_posts  = get_posts( array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) ); 
 $posts = 1;		
-foreach ( $the_posts as $post_id ) :
-	if ( $post_id == $post->ID ) :
+foreach ( $the_posts as $post_id ) {
+	if ( $post_id == $post->ID ) {
 		break;
-	endif;
+	}
 	$posts ++;
-endforeach;
+}
 $array = get_option( 'taxonomy_' . $course->term_id );
 $post_list_title = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
@@ -34,18 +34,18 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
  */
 ?>
 
-<?php if ( is_single() && sizeof( $the_posts ) > 1 ) : ?>
+<?php if ( is_single() && sizeof( $the_posts ) > 1 ) { ?>
 	<div id="scc-wrap" class="scc-post-list">
-		<?php if ( $post_list_title != '' ) : ?>
+		<?php if ( $post_list_title != '' ) { ?>
 			<h3 class="scc-post-list-title"><?php echo $post_list_title; ?></h3>
-		<?php endif; ?>
-		<?php if ( $course_description != '' ) : ?>
+		<?php } ?>
+		<?php if ( $course_description != '' ) { ?>
 			<?php echo $course_description; ?>
-		<?php endif; ?>				
+		<?php } ?>				
 		<a href="#" class="scc-show-post-list"><?php _e( 'full course', 'scc' ); ?></a>
 		<div class="scc-post-container">
 			<<?php echo $list_container; ?> class="scc-posts">
-				<?php foreach ( $the_posts as $key => $post_id ) : ?>
+				<?php foreach ( $the_posts as $key => $post_id ) { ?>
 					<li <?php echo $no_list; ?>>
 						<span class="scc-list-item">
 							<?php 
@@ -57,8 +57,8 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 							?>
 						</span>
 					</li>
-				<?php endforeach; ?>
+				<?php } ?>
 			</<?php echo $list_container; ?>>
 		</div>
 	</div>
-<?php endif; ?>
+<?php } ?>
