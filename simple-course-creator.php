@@ -5,7 +5,7 @@
  * Description: Allows you to easily create and manage courses in your WordPress website.
  * Version: 1.0.2
  * Author: Sean Davis
- * Author URI: http://sdavismedia.com
+ * Author URI: http://seandavis.co
  * License: GPL2
  * Requires at least: 3.8
  * Tested up to: 3.8
