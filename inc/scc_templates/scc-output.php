@@ -41,8 +41,8 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 		<?php } ?>
 		<?php if ( $course_description != '' ) { ?>
 			<?php echo $course_description; ?>
-		<?php } ?>				
-		<a href="#" class="scc-show-post-list"><?php _e( 'full course', 'scc' ); ?></a>
+		<?php } ?>
+		<a href="#" class="scc-toggle-post-list"><?php _e( 'full course', 'scc' ); ?></a>
 		<div class="scc-post-container">
 			<<?php echo $list_container; ?> class="scc-posts">
 				<?php foreach ( $the_posts as $key => $post_id ) { ?>

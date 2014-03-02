@@ -41,7 +41,7 @@
 #scc-wrap h3 {
 	margin-top: 0;
 }
-#scc-wrap .scc-show-post-list {
+#scc-wrap .scc-toggle-post-list {
 	position: absolute;
 		right: 10px;
 		bottom: 2px;

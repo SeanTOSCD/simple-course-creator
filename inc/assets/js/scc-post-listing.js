@@ -1,5 +1,11 @@
-jQuery('.scc-show-post-list').click(function() {
-	jQuery(this).closest('.scc-post-list').find('.scc-post-container').slideDown();
-	jQuery(this).fadeOut();
-	return false;
-});
+(function($){
+	$('.scc-toggle-post-list').on('click', function(e){
+		var postList = $(this).siblings('.scc-post-container');
+		if (postList.css('display') == 'none') {
+			postList.slideDown();
+		} else if (postList.css('display') == 'block') {
+			postList.slideUp();
+		}
+		return false;
+	});
+})(jQuery);
