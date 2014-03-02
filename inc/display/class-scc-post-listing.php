@@ -142,8 +142,23 @@ class SCC_Post_Listing {
 	 * @credits stylesheet hierarchy approach by Easy Digital Downloads
 	 * @since 1.0.0
 	 */
-	public function frontend_styles(  ) {
-		wp_register_script( 'scc-post-list-js', SCC_URL . 'inc/assets/js/scc-post-listing.js', array( 'jquery' ), SCC_VERSION, true );
+	public function frontend_styles() {
+		
+		// if the active theme has a properly named JS file in the correct
+		// location within the theme, store it in a variable
+		$child_theme_scc_script = trailingslashit( get_stylesheet_directory() ) . 'scc_templates/scc-post-listing.js';
+		$parent_theme_scc_script = trailingslashit( get_template_directory() ) . 'scc_templates/scc-post-listing.js';
+		
+		// check to see if the above variables actually had files
+		// if so, store those variables in a new variable
+		// $primary_script will only hold one value based on which files exist
+		if ( file_exists( $child_theme_scc_script ) ) {
+			$primary_script = trailingslashit( get_stylesheet_directory_uri() ) . 'scc_templates/scc-post-listing.js';
+		} elseif ( file_exists( $parent_theme_scc_script ) ) {
+			$primary_script = trailingslashit( get_template_directory_uri() ) . 'scc_templates/scc-post-listing.js';
+		} else {
+			$primary_script = SCC_URL . 'inc/scc_templates/scc-post-listing.js';
+		}
 		
 		// if the active theme has a properly named CSS file in the correct
 		// location within the theme, store it in a variable
@@ -164,6 +179,7 @@ class SCC_Post_Listing {
 		// register and enqueue the appropriate CSS file based on above checks
 		if ( is_single() ) {
 			wp_enqueue_style( 'scc-post-listing-css', $primary_style );
+			wp_enqueue_script( 'scc-post-list-js', $primary_script, array( 'jquery' ), SCC_VERSION, true );
 		}
 	}
 }
