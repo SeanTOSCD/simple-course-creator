@@ -32,7 +32,6 @@
  * @category Core
  * @author Sean Davis
  * @license GNU GENERAL PUBLIC LICENSE Version 2 - /license.txt
- * @version 1.0.2
  */
 
 
