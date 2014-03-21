@@ -180,7 +180,7 @@ class SCC_Settings_Page {
 									<td>
 										<p><?php echo __( 'You are more than welcome to override the basic default styles, JavaScript, or HTML template responsible for displaying the course container.', 'scc' ); ?></p>
 										<p><?php echo __( 'If you only want to edit a few CSS styles, you&rsquo;re better off using your own theme&rsquo;s stylesheet and simply writing stronger CSS.', 'scc' ); ?></p>
-										<p><?php echo __( 'If you would like to override the actual files for displaying the course container, you can easily do so by creating a folder in the root of your theme called "scc_templates" and copying any of the files you&rsquo;d like from the plugin&rsquo;s "inc/scc_templates" folder into your new theme folder.', 'scc' ); ?></p>
+										<p><?php echo __( 'If you would like to override the actual files for displaying the course container, you can easily do so by creating a folder in the root of your theme called "scc_templates" and copying any of the files you&rsquo;d like from the plugin&rsquo;s "includes/scc_templates" folder into your new theme folder.', 'scc' ); ?></p>
 										<p><?php echo __( 'Your theme files will now completely override the plugin files. Be sure to copy these files and not simply create new, empty ones. Even if they&rsquo;re empty, they&rsquo;ll still override.', 'scc' ); ?></p>
 									</td>
 								</tr>

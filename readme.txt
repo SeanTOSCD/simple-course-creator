@@ -59,7 +59,7 @@ The course display toggle link is also filtered. Use the following filter to cha
 
 -- The second way is to override the plugin display files in your active theme.
 
-You'd create a directory in the ROOT of your active theme called `scc_templates` and in it, copy any of the files from the `inc/scc_templates` directory of the plugin. Your new theme files will override the plugin files. 
+You'd create a directory in the ROOT of your active theme called `scc_templates` and in it, copy any of the files from the `includes/scc_templates` directory of the plugin. Your new theme files will override the plugin files. 
 
 Only use this method if you know your way around PHP, HTML, CSS, and JS.
 

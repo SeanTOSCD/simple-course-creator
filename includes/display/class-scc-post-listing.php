@@ -117,7 +117,7 @@ class SCC_Post_Listing {
 			$template_path = 'scc_templates';
 		}
 		if ( ! $default_path ) {
-			$default_path  = SCC_DIR . 'inc/scc_templates/';
+			$default_path  = SCC_DIR . 'includes/scc_templates/';
 		}
 
 		// Look within passed path within the theme - this is priority
@@ -157,7 +157,7 @@ class SCC_Post_Listing {
 		} elseif ( file_exists( $parent_theme_scc_script ) ) {
 			$primary_script = trailingslashit( get_template_directory_uri() ) . 'scc_templates/scc-post-listing.js';
 		} else {
-			$primary_script = SCC_URL . 'inc/scc_templates/scc-post-listing.js';
+			$primary_script = SCC_URL . 'includes/scc_templates/scc-post-listing.js';
 		}
 		
 		// if the active theme has a properly named CSS file in the correct
@@ -173,7 +173,7 @@ class SCC_Post_Listing {
 		} elseif ( file_exists( $parent_theme_scc_style ) ) {
 			$primary_style = trailingslashit( get_template_directory_uri() ) . 'scc_templates/scc.css';
 		} else {
-			$primary_style = SCC_URL . 'inc/scc_templates/scc.css';
+			$primary_style = SCC_URL . 'includes/scc_templates/scc.css';
 		}
 		
 		// register and enqueue the appropriate CSS file based on above checks

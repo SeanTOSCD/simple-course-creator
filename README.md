@@ -93,7 +93,7 @@ You are more than welcome to override the basic default styles, behavior, or HTM
 
 If you only want to edit a few CSS styles, you're better off using your own theme's stylesheet and simply writing stronger CSS.
 
-If you would like to override the actual CSS file, JavaScript file, or HTML template for displaying the course container, you can easily do so by creating a folder in the root of your theme called `scc_templates` and copying any of the files you'd like from the plugin's `inc/scc_templates` folder into your new theme folder. 
+If you would like to override the actual CSS file, JavaScript file, or HTML template for displaying the course container, you can easily do so by creating a folder in the root of your theme called `scc_templates` and copying any of the files you'd like from the plugin's `includes/scc_templates` folder into your new theme folder. 
 
 Your theme files will now completely override the plugin files.
 

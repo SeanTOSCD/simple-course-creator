@@ -1,0 +1,268 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Course Creator\n"
+"POT-Creation-Date: 2014-03-20 22:12-0600\n"
+"PO-Revision-Date: 2014-03-20 22:13-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/class-scc-custom-taxonomy.php:47
+msgctxt "scc"
+msgid "Courses"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:48
+msgctxt "scc"
+msgid "Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:49
+msgid "Search Courses"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:50
+msgid "All Courses"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:51
+msgid "Parent Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:52
+msgid "Parent Course:"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:53
+msgid "Edit Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:54
+msgid "Update Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:55
+msgid "Add New Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:56
+msgid "New Course Name"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:57
+msgid "Courses"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:58
+msgid "Popular Courses"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:159
+#: includes/admin/class-scc-custom-taxonomy.php:186
+msgid "Post Listing Title"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:161
+#: includes/admin/class-scc-custom-taxonomy.php:190
+msgid "This is the displayed title of your post listing container."
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:232
+msgid "Course"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:257
+msgid "no course selected"
+msgstr ""
+
+#: includes/admin/class-scc-custom-taxonomy.php:280
+msgid "Show all courses"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:31
+msgid "Course Settings"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:43
+msgid "Course Container Display Settings"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:46
+msgid "Course Container Position"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:50
+msgid "HTML List Style"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:62
+msgid ""
+"These settings control the front-end display of the post listing container "
+"inside of posts that are part of courses."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:77
+msgid "Above Content"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:78
+msgid "Below Content"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:79
+msgid "Above & Below Content"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:80
+msgid "Hide Course Container"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:88
+msgid "Choose where to display your course container."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:104
+msgid "Numbered List"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:105
+msgid "Bullet Points"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:106
+msgid "No List Indicator"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:114
+msgid "Choose your preferred list element style."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:159
+msgid " Settings"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:162
+msgid "Display"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:163
+msgid "Information"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:173
+msgid " Information"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:174
+msgid "Thanks for using "
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:174
+msgid ""
+". This plugin allows you to easily group your posts into series called "
+"\"Courses.\" Courses behave similarly to categories and tags. However, "
+"courses will display a course container in the content of posts within a "
+"given course."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:175
+msgid ""
+"The container displays a numbered list of all posts in that course, "
+"including the current post which is the only one not linked. Using the "
+"course title and description fields when creating new courses, you can "
+"customize the copy for your course containers on a per-course basis."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:179
+msgid "Theme Overrides"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:181
+msgid ""
+"You are more than welcome to override the basic default styles, JavaScript, "
+"or HTML template responsible for displaying the course container."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:182
+msgid ""
+"If you only want to edit a few CSS styles, you&rsquo;re better off using "
+"your own theme&rsquo;s stylesheet and simply writing stronger CSS."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:183
+msgid ""
+"If you would like to override the actual files for displaying the course "
+"container, you can easily do so by creating a folder in the root of your "
+"theme called \"scc_templates\" and copying any of the files you&rsquo;d like "
+"from the plugin&rsquo;s \"includes/scc_templates\" folder into your new theme "
+"folder."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:184
+msgid ""
+"Your theme files will now completely override the plugin files. Be sure to "
+"copy these files and not simply create new, empty ones. Even if they&rsquo;"
+"re empty, they&rsquo;ll still override."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:188
+msgid "Bugs & Contributions"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:190
+msgid "If you have any issues that you know how to fix, feel free to "
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:190
+msgid "fork the repo on Github"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:190
+msgid ""
+" and submit a pull request with your corrections. The same is true of any "
+"features you feel should be added or changes that can be made. If you are "
+"not a developer and you need support, you can "
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:190
+msgid "get in contact here"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:194
+msgid "License Information"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:196
+msgid "This plugin, like WordPress, is licensed under the GPL."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:200
+msgid "Plugin Contributors"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:202
+msgid "View all contributors"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:202
+msgid "Fork the repo and submit a pull request if you would like to pitch in."
+msgstr ""
+
+#: includes/scc_templates/scc-output.php:16
+msgid "full course"
+msgstr ""
+
+#: simple-course-creator.php:58
+msgid "Simple Course Creator"
+msgstr ""

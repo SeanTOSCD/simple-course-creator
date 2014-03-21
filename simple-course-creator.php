@@ -10,7 +10,7 @@
  * Requires at least: 3.8
  * Tested up to: 3.8
  * Text Domain: scc
- * Domain Path: /inc/languages/
+ * Domain Path: /languages/
  * 
  * This plugin is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as 
@@ -83,7 +83,7 @@ class Simple_Course_Creator {
 	 * @since 1.0.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'scc', false, SCC_DIR . "inc/languages" );
+		load_plugin_textdomain( 'scc', false, SCC_DIR . "languages" );
 	}
 
 
@@ -95,7 +95,7 @@ class Simple_Course_Creator {
 	public function admin_assets() {
 		
 		// admin page CSS
-		wp_register_style( 'scc_admin_style', SCC_URL . 'inc/assets/css/admin-style.css' );
+		wp_register_style( 'scc_admin_style', SCC_URL . 'assets/css/admin-style.css' );
 		
 		// only load styles on SCC admin pages
 		if ( 'settings_page_simple_course_creator' == get_current_screen()->id ) {
@@ -110,9 +110,9 @@ class Simple_Course_Creator {
 	 * @since 1.0.0
 	 */
 	private function includes() {
-		require_once( SCC_DIR . 'inc/admin/class-scc-settings-page.php' );		// main settings page
-		require_once( SCC_DIR . 'inc/admin/class-scc-custom-taxonomy.php' );	// setup course taxonomy
-		require_once( SCC_DIR . 'inc/display/class-scc-post-listing.php' );		// display post listing
+		require_once( SCC_DIR . 'includes/admin/class-scc-settings-page.php' );		// main settings page
+		require_once( SCC_DIR . 'includes/admin/class-scc-custom-taxonomy.php' );	// setup course taxonomy
+		require_once( SCC_DIR . 'includes/display/class-scc-post-listing.php' );	// display post listing
 	}
 }
 new Simple_Course_Creator();
