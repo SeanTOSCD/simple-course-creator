@@ -8,7 +8,7 @@ class SCC_Post_Listing {
 
 		
 	/**
-	 * Constructor for SCC_Post_Listing class
+	 * constructor for SCC_Post_Listing class
 	 *
 	 * @since 1.0.0
 	 */
@@ -23,7 +23,7 @@ class SCC_Post_Listing {
 	
 
 	/**
-	 * Determine a post's Course
+	 * determine a post's Course
 	 *
 	 * @since 1.0.0
 	 */

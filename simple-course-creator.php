@@ -35,12 +35,12 @@
  */
 
 
-// No accessing this file directly
+// no accessing this file directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 	
 /**
- * Primary class for Simple Course Creator
+ * primary class for Simple Course Creator
  *
  * @since 1.0.0
  */
@@ -48,7 +48,7 @@ class Simple_Course_Creator {
 
 		
 	/**
-	 * Constructor for Simple_Course_Creator class
+	 * constructor for Simple_Course_Creator class
 	 *
 	 * @since 1.0.0
 	 */
@@ -78,7 +78,7 @@ class Simple_Course_Creator {
 	
 
 	/**
-	 * Load SCC textdomain
+	 * load SCC textdomain
 	 *
 	 * @since 1.0.0
 	 */
@@ -88,7 +88,7 @@ class Simple_Course_Creator {
 
 
 	/** 
-	 * Enqueue back-end scripts and styles
+	 * enqueue back-end scripts and styles
 	 *
 	 * @since 1.0.0
 	 */

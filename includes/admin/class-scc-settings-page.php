@@ -8,7 +8,7 @@ class SCC_Settings_Page {
 
 		
 	/**
-	 * Constructor for SCC_Settings_Page class
+	 * constructor for SCC_Settings_Page class
 	 *
 	 * @since 1.0.0
 	 */

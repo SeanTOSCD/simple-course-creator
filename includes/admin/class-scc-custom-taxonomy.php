@@ -8,7 +8,7 @@ class SCC_Custom_Taxonomy {
 
 		
 	/**
-	 * Constructor for SCC_Custom_Taxonomy class
+	 * constructor for SCC_Custom_Taxonomy class
 	 *
 	 * @since 1.0.0
 	 */
@@ -35,7 +35,7 @@ class SCC_Custom_Taxonomy {
 	
 	
 	/**
-	 * Register "Course" taxonomy 
+	 * register "Course" taxonomy 
 	 *
 	 * Also setup a custom metabox to appear on the edit post screen
 	 * using the course_meta_box() method.
@@ -70,7 +70,7 @@ class SCC_Custom_Taxonomy {
 	
 
 	/**
-	 * Determine a post's Course
+	 * determine a post's Course
 	 *
 	 * @since 1.0.0
 	 */
@@ -86,7 +86,7 @@ class SCC_Custom_Taxonomy {
 	
 
 	/**
-	 * Determine a post's Course ID
+	 * determine a post's Course ID
 	 *
 	 * @uses retrieve_course()
 	 * @since 1.0.0
@@ -119,10 +119,10 @@ class SCC_Custom_Taxonomy {
 	 */
 	public function course_meta_box( $post ) {
 		
-		// Get the current course for the post if set
+		// get the current course for the post if set
 		$current_course = $this->retrieve_course_id( $post->ID );
 		
-		// Get list of all courses and the taxonomy
+		// get list of all courses and the taxonomy
 		$tax = get_taxonomy( 'course' );
 		$courses = get_terms( 'course', array( 'hide_empty' => false, 'orderby' => 'name' ) );
 		?>
@@ -142,7 +142,7 @@ class SCC_Custom_Taxonomy {
 	
 	
 	/**
-	 * Add title field when creating a course
+	 * add title field when creating a course
 	 *
 	 * Under the "Posts" dashboard menu, "Courses" is a submenu page
 	 * used to create new Courses. During the creation process, which
@@ -164,7 +164,7 @@ class SCC_Custom_Taxonomy {
 	
 	
 	/**
-	 * Add title field for editing an existing course
+	 * add title field for editing an existing course
 	 *
 	 * Now that the "Post Listing Title" field is in place, users need 
 	 * to be able to edit it on the term edit screen. This method adds
@@ -194,7 +194,7 @@ class SCC_Custom_Taxonomy {
 	
 	
 	/**
-	 * Save the course title
+	 * save the course title
 	 *
 	 * From both the two above methods, save any edits made to
 	 * the "Post Listing Title" field.
@@ -218,7 +218,7 @@ class SCC_Custom_Taxonomy {
 	
 
 	/**
-	 * Output admin column header to the manage posts screen
+	 * output admin column header to the manage posts screen
 	 *
 	 * @since 1.0.0
 	 */
@@ -237,7 +237,7 @@ class SCC_Custom_Taxonomy {
 	
 
 	/**
-	 * Output admin column values
+	 * output admin column values
 	 *
 	 * On the manage posts screen beneath the header added in the columns()
 	 * method, output values for each post based on whether or not it is
@@ -261,7 +261,7 @@ class SCC_Custom_Taxonomy {
 	
 
 	/**
-	 * Filter posts by a particular course on manage posts screen
+	 * filter posts by a particular course on manage posts screen
 	 *
 	 * @since 1.0.0
 	 */
