@@ -64,3 +64,17 @@ You'd create a directory in the ROOT of your active theme called `scc_templates`
 Only use this method if you know your way around PHP, HTML, CSS, and JS.
 
 -- Lastly, for minimal display tweaks, simply write CSS in your active theme that overrides the default plugin CSS, which is minimal.
+
+== Screenshots ==
+
+1. settings Page with output options
+2. create a course just like categories and tags
+3. assign a post to a course from edit post screen
+4. filter course information from manage posts screen
+5. course output collapsed
+6. course output expanded
+
+== Changelog ==
+
+= 1.0.0 =
+* first stable version
