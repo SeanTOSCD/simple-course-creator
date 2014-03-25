@@ -176,10 +176,10 @@ class SCC_Post_Listing {
 			$primary_style = SCC_URL . 'includes/scc_templates/scc.css';
 		}
 		
-		// register and enqueue the appropriate CSS file based on above checks
+		// register and enqueue the appropriate assets based on above checks
 		if ( is_single() ) {
 			wp_enqueue_style( 'scc-post-listing-css', $primary_style );
-			wp_enqueue_script( 'scc-post-list-js', $primary_script, array( 'jquery' ), SCC_VERSION, true );
+			wp_register_script( 'scc-post-list-js', $primary_script, array( 'jquery' ), SCC_VERSION, true );
 		}
 	}
 }
