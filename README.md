@@ -22,9 +22,9 @@ The course listing will display as a container that shows nothing but the course
 
 The series of posts will be hidden until you click a subtle link for displaying them, at which point the container will gracefully expand to reveal all posts in said course. They will all be linked except for the current post.
 
-![Course Description](http://seandavis.co/wp-content/uploads/2014/02/Screen-Shot-2014-02-24-at-2.54.45-PM.png)
+![Course Collapsed](http://buildwpyourself.com/wp-content/uploads/2014/03/course-collapsed.png)
 
-![Course Listing](http://seandavis.co/wp-content/uploads/2014/02/Screen-Shot-2014-02-24-at-2.55.54-PM.png)
+![Course Expanded](http://buildwpyourself.com/wp-content/uploads/2014/03/course-expanded.png)
 
 Styles are kept to a minimum so theme styles are inherited as much as possible.
 
