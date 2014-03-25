@@ -37,7 +37,7 @@ Choose to display your course containers above post content, below post content,
 
 You may also choose your course list style type. They can be displayed as a numbered list, a bulleted list, or a list with no list indicator at all... simply stacked like paragraphs.
 
-![Simple Course Creator Settings](http://seandavis.co/wp-content/uploads/2014/02/simple-course-creator-settings.png)
+![Simple Course Creator Settings](http://buildwpyourself.com/wp-content/uploads/2014/03/scc-settings.png)
 
 Expect more options in the future.
 
