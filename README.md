@@ -57,7 +57,8 @@ Here's a list of all the hook names:
 * scc_before_toggle
 * scc_after_toggle
 * scc_above_list
-* scc_list_item
+* scc_before_list_item
+* scc_after_list_item
 * scc_below_list
 * scc_container_bottom
 * scc_after_container

@@ -85,7 +85,7 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 			<<?php echo $list_container; ?> class="scc-posts">
 				<?php foreach ( $the_posts as $key => $post_id ) : ?>
 					<li <?php echo $no_list; ?>>
-						<?php do_action( 'scc_list_item' ); ?>
+						<?php do_action( 'scc_before_list_item' ); ?>
 						<span class="scc-list-item">
 							<?php 
 							if ( ! is_single( $post_id ) ) :
@@ -95,6 +95,7 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 							endif;
 							?>
 						</span>
+						<?php do_action( 'scc_after_list_item' ); ?>
 					</li>
 				<?php endforeach;
 				do_action( 'scc_below_list' ); ?>
