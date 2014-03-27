@@ -95,7 +95,7 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 							endif;
 							?>
 						</span>
-						<?php do_action( 'scc_after_list_item' ); ?>
+						<?php do_action( 'scc_after_list_item', $post_id ); ?>
 					</li>
 				<?php endforeach;
 				do_action( 'scc_below_list' ); ?>
