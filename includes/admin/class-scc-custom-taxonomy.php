@@ -131,7 +131,7 @@ class SCC_Custom_Taxonomy {
 				<?php echo $tax->labels->parent_item_colon; ?>
 			</label>
 			<select name="tax_input[course]" style="width:100%">
-				<option value="0"><?php echo $tax->labels->parent_item; ?></option>
+				<option value="0"><?php _e( 'Select Course', 'scc' ) ?></option>
 				<?php foreach ( $courses as $course ) : ?>
 					<option value="<?php echo esc_attr( $course->slug ); ?>" <?php selected( $current_course, $course->term_id ); ?>><?php echo esc_html( $course->name ); ?></option>
 				<?php endforeach; ?>
