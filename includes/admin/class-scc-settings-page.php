@@ -119,7 +119,7 @@ class SCC_Settings_Page {
 	/**
 	 * save position setting
 	 *
-	 * @used_by course_list_position()
+	 * @used_by course_list_position() & course_list_type()
 	 * @since 1.0.0
 	 */
 	public function save_settings( $input ) {
