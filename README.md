@@ -77,9 +77,9 @@ Pasting that PHP into your active theme's functions file will output "-- custom 
 To edit the "full course" toggle link, use the built-in filter `course_toggle` like so.
 
 ``` php
-function function_name_filter( $content ) {
-	$content = str_replace( 'full course', 'complete series', $content );
-	return $content;
+function function_name_filter( $toggle ) {
+	$toggle = str_replace( 'full course', 'complete series', $toggle );
+	return $toggle;
 }
 add_filter( 'course_toggle', 'function_name_filter' );
 ```
