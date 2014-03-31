@@ -3,6 +3,11 @@ Simple Course Creator
 
 Simple Course Creator is designed to easily link posts together in a series and output that series list in the content of each included post.
 
+#### Add-ons
+
+*[Simple Course Creator Customizer](https://github.com/sdavis2702/simple-course-creator-customizer)
+*[Simple Course Creator Post Meta](https://github.com/sdavis2702/simple-course-creator-post-meta)
+
 ### How It Works
 ---
 
