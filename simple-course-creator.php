@@ -33,10 +33,7 @@
  * @author Sean Davis
  * @license GNU GENERAL PUBLIC LICENSE Version 2 - /license.txt
  */
-
-
-// no accessing this file directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
 
 	
 /**
@@ -50,12 +47,13 @@ class Simple_Course_Creator {
 	/**
 	 * constructor for Simple_Course_Creator class
 	 *
-	 * @since 1.0.0
+	 * Set up the basic plugin environment and with definitions,
+	 * plugin information, and require plugin files.
 	 */
 	public function __construct() {
 		
 		// define plugin name
-		define( 'SCC_NAME', __( 'Simple Course Creator', 'scc' ) );
+		define( 'SCC_NAME', 'Simple Course Creator' );
 		
 		// define plugin version
 		define( 'SCC_VERSION', '1.0.0' );
@@ -79,8 +77,6 @@ class Simple_Course_Creator {
 
 	/**
 	 * load SCC textdomain
-	 *
-	 * @since 1.0.0
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( 'scc', false, SCC_DIR . "languages" );
@@ -88,9 +84,7 @@ class Simple_Course_Creator {
 
 
 	/** 
-	 * enqueue back-end scripts and styles
-	 *
-	 * @since 1.0.0
+	 * enqueue *back-end* scripts and styles
 	 */
 	public function admin_assets() {
 		
@@ -106,8 +100,6 @@ class Simple_Course_Creator {
 	
 	/**
 	 * require additional plugin files
-	 *
-	 * @since 1.0.0
 	 */
 	private function includes() {
 		require_once( SCC_DIR . 'includes/admin/class-scc-settings-page.php' );		// main settings page

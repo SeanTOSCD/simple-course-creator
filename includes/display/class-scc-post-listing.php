@@ -2,15 +2,24 @@
 /**
  * SCC_Post_Listing class
  *
+ * This class gathers all the necessary information for creating and
+ * outputting the post listing on posts that are part of courses.
+ *
+ * The markup for output (as well as its corresponding front-end CSS
+ * and JS files) is located in a remote folder so that users can
+ * override the files directly from their active theme. However, the
+ * complete setup of the system starts here.
+ *
  * @since 1.0.0
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
+
+
 class SCC_Post_Listing {
 
 		
 	/**
 	 * constructor for SCC_Post_Listing class
-	 *
-	 * @since 1.0.0
 	 */
 	public function __construct() {
 		
@@ -24,8 +33,6 @@ class SCC_Post_Listing {
 
 	/**
 	 * determine a post's Course
-	 *
-	 * @since 1.0.0
 	 */
 	public function retrieve_course( $post_id ) {
 		$course = wp_get_post_terms( $post_id, 'course' );
@@ -42,7 +49,6 @@ class SCC_Post_Listing {
 	 * add post listing to content
 	 *
 	 * @uses retrieve_course()
-	 * @since 1.0.0
 	 */
 	public function post_listing( $content ) {
 		global $post;
@@ -96,7 +102,6 @@ class SCC_Post_Listing {
 	 * get and include template files
 	 *
 	 * @uses locate_template()
-	 * @since 1.0.0
 	 */
 	public function get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 		if ( $args && is_array($args) ) {
@@ -110,7 +115,6 @@ class SCC_Post_Listing {
 	 * locate a template and return the path for inclusion
 	 *
 	 * @used_by get_template()
-	 * @since 1.0.0
 	 */
 	public function locate_template( $template_name, $template_path = '', $default_path = '' ) {
 		if ( ! $template_path ) {
@@ -140,7 +144,6 @@ class SCC_Post_Listing {
 	 * setup stylesheet and script for post listing 
 	 * 
 	 * @credits stylesheet hierarchy approach by Easy Digital Downloads
-	 * @since 1.0.0
 	 */
 	public function frontend_styles() {
 		

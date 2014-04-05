@@ -2,15 +2,27 @@
 /**
  * SCC_Custom_Taxonomy class
  *
+ * This class is responsible for creating the new taxonomy and its
+ * corresponding options and settings.
+ *
+ * The taxonomy includes the typical Name, Slug, and Description fields
+ * but also adds a new field called "Post Listing Title" to the add/edit
+ * screens.
+ *
+ * Posts can be assigned to the taxonomy from both the manage posts
+ * screen and the edit post screens themselves. Posts can only be assigned
+ * to one term.
+ *
  * @since 1.0.0
- */
+ */ 
+if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
+
+
 class SCC_Custom_Taxonomy {
 
 		
 	/**
 	 * constructor for SCC_Custom_Taxonomy class
-	 *
-	 * @since 1.0.0
 	 */
 	public function __construct() {
 		
@@ -39,8 +51,6 @@ class SCC_Custom_Taxonomy {
 	 *
 	 * Also setup a custom metabox to appear on the edit post screen
 	 * using the course_meta_box() method.
-	 *
-	 * @since 1.0.0
 	 */
 	public function register_taxonomy_course() {
 		$labels = array(
@@ -71,8 +81,6 @@ class SCC_Custom_Taxonomy {
 
 	/**
 	 * determine a post's Course
-	 *
-	 * @since 1.0.0
 	 */
 	public function retrieve_course( $post_id ) {
 		$course = wp_get_post_terms( $post_id, 'course' );
@@ -89,7 +97,6 @@ class SCC_Custom_Taxonomy {
 	 * determine a post's Course ID
 	 *
 	 * @uses retrieve_course()
-	 * @since 1.0.0
 	 */
 	public function retrieve_course_id( $post_id ) {
 		$course = $this->retrieve_course( $post_id );
@@ -115,7 +122,6 @@ class SCC_Custom_Taxonomy {
 	 * plugin.
 	 *
 	 * @uses retrieve_course_id()
-	 * @since 1.0.0
 	 */
 	public function course_meta_box( $post ) {
 		
@@ -151,8 +157,6 @@ class SCC_Custom_Taxonomy {
 	 *
 	 * This title appears on the actual posts assigned to an article.
 	 * It is the title for the container holding the post listing.
-	 *
-	 * @since 1.0.0
 	 */
 	public function course_meta_title() { ?>
 		<div class="form-field">
@@ -170,8 +174,6 @@ class SCC_Custom_Taxonomy {
 	 * to be able to edit it on the term edit screen. This method adds
 	 * the form field to the term edit screen and populates it with 
 	 * the saved title, if it exists.
-	 *
-	 * @since 1.0.0
 	 */
 	public function edit_course_meta_title( $term ) {
  
@@ -200,7 +202,6 @@ class SCC_Custom_Taxonomy {
 	 * the "Post Listing Title" field.
 	 *
 	 * @used_by course_meta_title() and edit_course_meta_title()
-	 * @since 1.0.0
 	 */
 	public function save_course_meta_title( $term_id ) {
 		if ( isset( $_POST['term_meta'] ) ) {
@@ -219,8 +220,6 @@ class SCC_Custom_Taxonomy {
 
 	/**
 	 * output admin column header to the manage posts screen
-	 *
-	 * @since 1.0.0
 	 */
 	public function columns( $columns ) {
 		if ( ! is_array( $columns ) ) {
@@ -245,7 +244,6 @@ class SCC_Custom_Taxonomy {
 	 * output a message.
 	 *
 	 * @uses retrieve_course()
-	 * @since 1.0.0
 	 */
 	public function custom_columns( $column ) {
 		global $post;
@@ -262,8 +260,6 @@ class SCC_Custom_Taxonomy {
 
 	/**
 	 * filter posts by a particular course on manage posts screen
-	 *
-	 * @since 1.0.0
 	 */
 	public function course_posts() {
 		global $typenow, $wp_query;

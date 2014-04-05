@@ -2,15 +2,20 @@
 /**
  * settings page class
  *
+ * This class creates the settings menu item as well as the settings
+ * page. The menu item is added to WP Dashboard -> Settings -> Course
+ * Settings.
+ *
  * @since 1.0.0
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
+
+
 class SCC_Settings_Page {
 
 		
 	/**
 	 * constructor for SCC_Settings_Page class
-	 *
-	 * @since 1.0.0
 	 */
 	public function __construct() {
 		
@@ -23,9 +28,7 @@ class SCC_Settings_Page {
 	
 	
 	/**
-	 * add settings page under Setting smenu
-	 *
-	 * @since 1.0.0
+	 * add new settings page under Setting smenu
 	 */
 	public function settings_menu() {
 		add_options_page( SCC_NAME, __( 'Course Settings', 'scc' ), 'manage_options', 'simple_course_creator', array( $this, 'settings_page' ) );
@@ -34,8 +37,6 @@ class SCC_Settings_Page {
 	
 	/**
 	 * register settings
-	 *
-	 * @since 1.0.0
 	 */
 	public function register_settings() {
 		
@@ -56,7 +57,6 @@ class SCC_Settings_Page {
 	 * create the section for course display
 	 *
 	 * @callback_for 'course_display_settings' section
-	 * @since 1.0.0
 	 */
 	public function course_display_settings() {
 		echo '<p>' . __( 'These settings control the front-end display of the post listing container inside of posts that are part of courses.', 'scc' ) . '</p>';
@@ -67,7 +67,6 @@ class SCC_Settings_Page {
 	 * create course position option
 	 *
 	 * @callback_for 'display_position' field
-	 * @since 1.0.0
 	 */
 	public function course_list_position() {
 		$options = get_option( 'display_position' );
@@ -94,7 +93,6 @@ class SCC_Settings_Page {
 	 * course list type option
 	 *
 	 * @callback_for 'list_type' field
-	 * @since 1.0.0
 	 */
 	public function course_list_type() {
 		$options = get_option( 'list_type' );
@@ -117,10 +115,9 @@ class SCC_Settings_Page {
 	
 	
 	/**
-	 * save position setting
+	 * save display settings
 	 *
 	 * @used_by course_list_position() & course_list_type()
-	 * @since 1.0.0
 	 */
 	public function save_settings( $input ) {
 		
@@ -149,9 +146,7 @@ class SCC_Settings_Page {
 	 * SCC has a single menu link as a submenu under the "Settings" section
 	 * of the WordPress dashboard. Within that page are tabbed settings pages.
 	 * Based on which tab is selected, different settings or informaiton will
-	 * show. 
-	 *
-	 * @since 1.0.0
+	 * show.
 	 */
 	public function settings_page() {
 		?>
