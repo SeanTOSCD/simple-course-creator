@@ -1,7 +1,25 @@
 /* admin styles */
-.plugin-description {
-	max-width: 700px
+.resources {
+	margin-top: 5px;
 }
-.plugin-info td p {
-	margin: 4px 0 15px;
+.wp-people-group {
+	margin-top: 0;
+}
+.wp-person {
+	display: inline-block;
+	margin: 0 1em 1em 0;
+	padding: 8px;
+	background: #FFF;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.wp-person .gravatar {
+	vertical-align: text-bottom;
+	margin-right: 8px;
+}
+.wp-person .web {
+	vertical-align: top;
+	text-decoration: none;
+}
+.wp-person .web:hover {
+	text-decoration: underline;
 }

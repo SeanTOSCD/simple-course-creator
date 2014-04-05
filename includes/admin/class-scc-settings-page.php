@@ -166,35 +166,21 @@ class SCC_Settings_Page {
 					} elseif ( $active_tab == 'simple_course_creator_info' ) {
 					?>
 						<h3><?php echo SCC_NAME . __( ' Information', 'scc' ); ?></h3>
-						<p class="plugin-description"><?php echo __( 'Thanks for using ', 'scc' ) . SCC_NAME . __( '. This plugin allows you to easily group your posts into series called "Courses." Courses behave similarly to categories and tags. However, courses will display a course container in the content of posts within a given course.', 'scc' ); ?></p> 
-						<p class="plugin-description"><?php echo __( 'The container displays a numbered list of all posts in that course, including the current post which is the only one not linked. Using the course title and description fields when creating new courses, you can customize the copy for your course containers on a per-course basis.', 'scc' ); ?></p>
 						<table class="form-table plugin-info">
 							<tbody>
 								<tr>
-									<th scope="row"><?php _e( 'Theme Overrides', 'scc' ); ?></th>
+									<th scope="row"><?php _e( 'Plugin Resources', 'scc' ); ?></th>
 									<td>
-										<p><?php echo __( 'You are more than welcome to override the basic default styles, JavaScript, or HTML template responsible for displaying the course container.', 'scc' ); ?></p>
-										<p><?php echo __( 'If you only want to edit a few CSS styles, you&rsquo;re better off using your own theme&rsquo;s stylesheet and simply writing stronger CSS.', 'scc' ); ?></p>
-										<p><?php echo __( 'If you would like to override the actual files for displaying the course container, you can easily do so by creating a folder in the root of your theme called "scc_templates" and copying any of the files you&rsquo;d like from the plugin&rsquo;s "includes/scc_templates" folder into your new theme folder.', 'scc' ); ?></p>
-										<p><?php echo __( 'Your theme files will now completely override the plugin files. Be sure to copy these files and not simply create new, empty ones. Even if they&rsquo;re empty, they&rsquo;ll still override.', 'scc' ); ?></p>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><?php _e( 'Bugs & Contributions', 'scc' ); ?></th>
-									<td>
-										<p><?php echo __( 'If you have any issues that you know how to fix, feel free to ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' .  __( 'fork the repo on Github', 'scc' ) . '</a>' .  __( ' and submit a pull request with your corrections. The same is true of any features you feel should be added or changes that can be made. If you are not a developer and you need support, you can ', 'scc' ) . '<a href="http://buildwpyourself.com/contact/" target="_blank">' . __( 'get in contact here', 'scc' ) . '</a>.'; ?></p>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row"><?php _e( 'License Information', 'scc' ); ?></th>
-									<td>
-										<p><?php echo __( 'This plugin, like WordPress, is licensed under the GPL.', 'scc' ); ?></p>
+										<p class="resources">
+											<?php echo __( 'New courses are created ', 'scc' ) . '<a href="' . admin_url( 'edit-tags.php?taxonomy=course' ) . '">' . __( 'here', 'scc' ) . '</a>' . __( ' under the Posts menu. Once a course is created, posts can be assigned to a course through the manage posts and edit post screens. To add content to the post listing output, see the ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator#wordpress-hooks--filters" target="_blank">' . __( 'hooks & filters', 'scc' ) . '</a> ' . __( 'documentation. To completely override the output, CSS, and JS files, see the ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator#active-theme-file-overrides" target="_blank">' . __( 'override plugin files', 'scc' ) . '</a> ' . __( 'documentation.', 'scc' ); ?>
+										</p>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><?php _e( 'Plugin Contributors', 'scc' ); ?></th>
 									<td>
-										<p><?php echo '<a href="https://github.com/sdavis2702/simple-course-creator/graphs/contributors" target="_blank">' . __( 'View all contributors', 'scc' ) . '</a>. ' . __( 'Fork the repo and submit a pull request if you would like to pitch in.', 'scc' ); ?></p>
+										<?php echo $this->scc_contributors(); ?>
+										<p><?php echo 'Fork <a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' . SCC_NAME . '</a> ' . __( ' on GitHub and submit a pull request if you would like to pitch in.', 'scc' ); ?></p>
 									</td>
 								</tr>
 							</tbody>
@@ -203,6 +189,55 @@ class SCC_Settings_Page {
 				</form>
 			</div>
 		<?php
+	}
+	
+	
+	/**
+	 * the contributors
+	 */
+	public function scc_contributors() { 
+		$contributors = $this->scc_get_contributors();									
+		$contributor_list = '<ul class="wp-people-group">';
+		
+		foreach ( $contributors as $contributor ) {
+			$contributor_list .= '<li class="wp-person">';
+			$contributor_list .= sprintf( '<a href="%s" title="%s">',
+			esc_url( 'https://github.com/' . $contributor->login ),
+			esc_html( sprintf( __( 'View %s', 'scc' ), $contributor->login ) )
+			);
+			$contributor_list .= sprintf( '<img src="%s" width="30" height="30" class="gravatar" alt="%s" />', esc_url( $contributor->avatar_url ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= sprintf( '<a class="web" href="%s">%s</a>', esc_url( 'https://github.com/' . $contributor->login ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= '</li>';
+		}										
+		$contributor_list .= '</ul>';
+		return $contributor_list;
+	}
+	
+	
+	/** 
+	 * get the repo contributors
+	 */
+	public function scc_get_contributors() {
+		$transient_key = 'scc_contributors';
+		$contributors = get_transient( $transient_key );
+		if ( false !== $contributors ) {
+			return $contributors;
+		}
+		
+		$response = wp_remote_get( 'https://api.github.com/repos/sdavis2702/simple-course-creator/contributors' );
+		if ( is_wp_error( $response ) ) {
+			return array();
+		}
+		
+		$contributors = json_decode( wp_remote_retrieve_body( $response ) );
+		if ( ! is_array( $contributors ) ) {
+			return array();
+		}
+		
+		set_transient( $transient_key, $contributors, 3600 );
+		return (array) $contributors;
 	}
 }
 new SCC_Settings_Page();
