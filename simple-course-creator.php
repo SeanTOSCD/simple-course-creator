@@ -48,7 +48,7 @@ class Simple_Course_Creator {
 	 * constructor for Simple_Course_Creator class
 	 *
 	 * Set up the basic plugin environment and with definitions,
-	 * plugin information, and require plugin files.
+	 * plugin information, and required plugin files.
 	 */
 	public function __construct() {
 		
