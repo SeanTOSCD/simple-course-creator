@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Simple Course Creator ===
 Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy
