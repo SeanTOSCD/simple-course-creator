@@ -4,11 +4,11 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: series, course, lesson, taxonomy
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: /trunk/
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily create, output, and manage post series with the "course" taxonomy.
+Easily create, output, and manage post series.
 
 == Description ==
 
@@ -16,11 +16,17 @@ Simple Course Creator is designed to easily link posts together in a series and 
 
 Output can be displayed above the post content, below, or both. There's also an option to display the posts as a number list, bullet list, or with no list indicator.
 
+Extend the functionality of Simple Course Creator with these add-on plugins:
+
+* [SCC Customizer](https://wordpress.org/plugins/simple-course-creator-customizer/) - Customizer the SCC output using the native WordPress customizer.
+* [SCC Post Meta](https://wordpress.org/plugins/simple-course-creator-post-meta/) - Add author and published date to SCC post listing items.
+* [SCC Front Display](https://wordpress.org/plugins/simple-course-creator-front-display/) - Indicate a post’s course on the blog home, archive pages, and search results.
+
 == Installation ==
 
 1. Upload `simple-course-creator` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Create a an unlimitied number of courses under the WordPress 'Posts' menu
+3. Create an unlimited number of courses under the WordPress 'Posts' menu
 4. Add single posts to a course on the post edit screen or the manage posts screen
 
 Follow Simple Course Creator on [Github](https://github.com/sdavis2702/simple-course-creator)
