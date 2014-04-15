@@ -53,6 +53,7 @@ class SCC_Post_Listing {
 	public function post_listing( $content ) {
 		global $post;
 		$options = get_option( 'display_position' );
+		$no_js = get_option( 'disable_js' );
 		
 		// only display the post listing on WordPress posts
 		if ( 'post' !== $post->post_type || ! is_main_query() ) {
@@ -66,7 +67,9 @@ class SCC_Post_Listing {
 			return $content;
 		}	
 		
-		wp_enqueue_script( 'scc-post-list-js' );
+		if ( $no_js['no_js'] != 1 ) {
+			wp_enqueue_script( 'scc-post-list-js' );
+		}
 		
 		ob_start(); 	
 			

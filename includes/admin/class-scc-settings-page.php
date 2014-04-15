@@ -45,11 +45,15 @@ class SCC_Settings_Page {
 		
 		// add option for choosing the display position of the course
 		add_settings_field( 'display_position', __( 'Course Container Position', 'scc'), array( $this, 'course_list_position' ), 'simple_course_creator', 'course_display_settings' );
-		register_setting( 'course_display_settings', 'display_position', array( $this, 'save_settings' ) ); 
+		register_setting( 'course_display_settings', 'display_position', array( $this, 'save_settings' ) );
 		
 		// add option for choosing the list style (ul, ol, none)
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
-		register_setting( 'course_display_settings', 'list_type', array( $this, 'save_settings' ) ); 
+		register_setting( 'course_display_settings', 'list_type', array( $this, 'save_settings' ) );
+		
+		// add option for disabling JS
+		add_settings_field( 'disable_js', __( 'Disable JavaScript', 'scc'), array( $this, 'course_disable_js' ), 'simple_course_creator', 'course_display_settings' );
+		register_setting( 'course_display_settings', 'disable_js', array( $this, 'save_settings' ) );
 	}
 	
 	
@@ -115,9 +119,24 @@ class SCC_Settings_Page {
 	
 	
 	/**
+	 * disable JS option
+	 *
+	 * @callback_for 'disable_js' field
+	 * @since 1.0.1
+	 */
+	public function course_disable_js() {
+		$options = get_option( 'disable_js' );
+		?>
+		<input id="disable_js" type="checkbox" name="disable_js[no_js]" value="1" <?php checked( $options['no_js'], 1, true ); ?>>
+		<label for="disable_js"><?php _e( 'Check this box to disable JavaScript (the course list will show by default).', 'scc' ); ?></label>
+		<?php	
+	}
+	
+	
+	/**
 	 * save display settings
 	 *
-	 * @used_by course_list_position() & course_list_type()
+	 * @used_by course_list_position(), course_list_type(), & course_disable_js()
 	 */
 	public function save_settings( $input ) {
 		
@@ -135,7 +154,16 @@ class SCC_Settings_Page {
 			$input['list_style_type'] == 'ordered';
 		} else {
 			$input['list_style_type'] == $list_type['list_style_type'];
-		}	
+		}
+		
+		// disable JS if checked
+		$list_type = get_option( 'disable_js' );
+		if ( ! isset( $input['no_js'] ) ) {
+			$input['no_js'] == 0;
+		} else {
+			$input['no_js'] == $list_type['no_js'];
+		}
+			
 		return $input;
 	}
 	

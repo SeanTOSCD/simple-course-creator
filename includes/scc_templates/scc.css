@@ -13,6 +13,9 @@
 #scc-wrap .scc-post-container {
 	display: none;
 }
+#scc-wrap .scc-show-posts {
+	display: block;
+}
 #scc-wrap p:last-of-type {
 	margin: 0 1em 0 0;
 }
