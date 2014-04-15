@@ -3,6 +3,7 @@
  * output the HTML for post listings (course container)
  */
 // build the post listing based on course
+global $post;
 $the_posts  = get_posts( array( 
 	'post_type'      => 'post',
 	'posts_per_page' => -1,
