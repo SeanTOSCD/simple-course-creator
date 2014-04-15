@@ -74,12 +74,7 @@ class SCC_Post_Listing {
 		ob_start(); 	
 			
 		// include *the appropriate* template file
-		$this->get_template( 'scc-output.php', array( 
-			'course'			=> $course, 
-			'description'		=> $course_description,
-			'course_posts'		=> $the_posts,
-			'posts'				=> $posts
-		) );
+		$this->get_template( 'scc-output.php', array( 'course' => $course ) );
 		
 		$post_listing = ob_get_clean();	
 		
