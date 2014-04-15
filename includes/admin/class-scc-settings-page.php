@@ -157,11 +157,11 @@ class SCC_Settings_Page {
 		}
 		
 		// disable JS if checked
-		$list_type = get_option( 'disable_js' );
+		$disable_js = get_option( 'disable_js' );
 		if ( ! isset( $input['no_js'] ) ) {
 			$input['no_js'] == 0;
 		} else {
-			$input['no_js'] == $list_type['no_js'];
+			$input['no_js'] == $disable_js['no_js'];
 		}
 			
 		return $input;
