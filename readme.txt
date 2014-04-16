@@ -1,5 +1,5 @@
 === Simple Course Creator ===
-Contributors: sdavis2702, mattonomics, DewaneMutunga
+Contributors: sdavis2702, mattonomics, dewanemutunga
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy
 Requires at least: 3.8
@@ -22,14 +22,14 @@ Extend the functionality of Simple Course Creator with these add-on plugins:
 * [SCC Post Meta](https://wordpress.org/plugins/simple-course-creator-post-meta/) - Add author and published date to SCC post listing items.
 * [SCC Front Display](https://wordpress.org/plugins/simple-course-creator-front-display/) - Indicate a post’s course on the blog home, archive pages, and search results.
 
+Follow Simple Course Creator’s development on [Github](https://github.com/sdavis2702/simple-course-creator)
+
 == Installation ==
 
 1. Upload `simple-course-creator` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create an unlimited number of courses under the WordPress 'Posts' menu
 4. Add single posts to a course on the post edit screen or the manage posts screen
-
-Follow Simple Course Creator on [Github](https://github.com/sdavis2702/simple-course-creator)
 
 == Frequently Asked Questions ==
 
