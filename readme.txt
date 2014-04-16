@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: series, course, lesson, taxonomy
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,9 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 6. course output expanded
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed: PHP warnings based on sanitization plugin settings
 
 = 1.0.1 =
 * New: Added "Disable JavaScript" (expand/collapse of post listing) setting on settings page
