@@ -84,7 +84,7 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 == Changelog ==
 
 = 1.0.2 =
-* Fixed: PHP warnings based on sanitization plugin settings
+* Fixed: PHP warnings based on sanitization of plugin settings
 
 = 1.0.1 =
 * New: Added "Disable JavaScript" (expand/collapse of post listing) setting on settings page
