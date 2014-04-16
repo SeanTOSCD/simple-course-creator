@@ -39,21 +39,27 @@ class SCC_Settings_Page {
 	 * register settings
 	 */
 	public function register_settings() {
+	
+		// register display settings
+		register_setting( 'course_display_settings', 'course_display_settings', array( $this, 'save_settings' ) );
 		
 		// add display settings section
 		add_settings_section( 'course_display_settings', __( 'Course Container Display Settings', 'scc' ), array( $this, 'course_display_settings' ), 'simple_course_creator' );
 		
 		// add option for choosing the display position of the course
 		add_settings_field( 'display_position', __( 'Course Container Position', 'scc'), array( $this, 'course_list_position' ), 'simple_course_creator', 'course_display_settings' );
-		register_setting( 'course_display_settings', 'display_position', array( $this, 'save_settings' ) );
 		
 		// add option for choosing the list style (ul, ol, none)
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
-		register_setting( 'course_display_settings', 'list_type', array( $this, 'save_settings' ) );
 		
 		// add option for disabling JS
 		add_settings_field( 'disable_js', __( 'Disable JavaScript', 'scc'), array( $this, 'course_disable_js' ), 'simple_course_creator', 'course_display_settings' );
-		register_setting( 'course_display_settings', 'disable_js', array( $this, 'save_settings' ) );
+		
+		if ( get_option( 'course_display_settings' ) == false ) {
+			update_option( 'display_position', 'above' );
+			update_option( 'list_type', 'ordered' );
+			update_option( 'disable_js', '0' );
+		}
 	}
 	
 	
@@ -73,7 +79,7 @@ class SCC_Settings_Page {
 	 * @callback_for 'display_position' field
 	 */
 	public function course_list_position() {
-		$options = get_option( 'display_position' );
+		$options = get_option( 'course_display_settings' );
 		
 		// possible course position options
 		$course_container = array(
@@ -83,9 +89,9 @@ class SCC_Settings_Page {
 			'hide'	=> array( 'value' => 'hide', 'desc' => __( 'Hide Course Container', 'scc' ) ),
 		);
 		?>
-	    <select id="display_position" name="display_position[list_position]">
+	    <select id="display_position" name="course_display_settings[display_position]">
 	    	<?php foreach ( $course_container as $c ) { // display options from $course_container array ?>
-		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['list_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
+		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['display_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
 		    <?php } ?>
 	    </select>
 	    <label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
@@ -99,7 +105,7 @@ class SCC_Settings_Page {
 	 * @callback_for 'list_type' field
 	 */
 	public function course_list_type() {
-		$options = get_option( 'list_type' );
+		$options = get_option( 'course_display_settings' );
 		
 		// possible list style options
 		$list_type = array(
@@ -108,9 +114,9 @@ class SCC_Settings_Page {
 			'none'		=> array( 'value' => 'none', 'desc' => __( 'No List Indicator', 'scc' ) ),
 		);
 		?>
-	    <select id="list_type" name="list_type[list_style_type]">
+	    <select id="list_type" name="course_display_settings[list_type]">
 	    	<?php foreach ( $list_type as $l ) { // display options from $list_type array ?>
-		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_style_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
+		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
 		    <?php } ?>
 	    </select>
 	    <label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
@@ -125,9 +131,9 @@ class SCC_Settings_Page {
 	 * @since 1.0.1
 	 */
 	public function course_disable_js() {
-		$options = get_option( 'disable_js' );
+		$options = get_option( 'course_display_settings' );
 		?>
-		<input id="disable_js" type="checkbox" name="disable_js[no_js]" value="1" <?php checked( $options['no_js'], 1, true ); ?>>
+		<input id="disable_js" type="checkbox" name="course_display_settings[disable_js]" value="1" <?php echo checked( 1, isset( $options['disable_js'] ) ? $options['disable_js'] : 0, false ); ?>>
 		<label for="disable_js"><?php _e( 'Check this box to disable JavaScript (the course list will show by default).', 'scc' ); ?></label>
 		<?php	
 	}
@@ -139,31 +145,25 @@ class SCC_Settings_Page {
 	 * @used_by course_list_position(), course_list_type(), & course_disable_js()
 	 */
 	public function save_settings( $input ) {
+		$all_options = get_option( 'course_display_settings' );
 		
-		// display full course above content by default
-		$position = get_option( 'display_position' );
-		if ( ! isset( $input['list_position'] ) ) {
-			$input['list_position'] == 'above';
+		// sanitize the display position option
+		if ( ! isset( $all_options['display_position'] ) ) {
+			$input['display_position'] = 'above';
 		} else {
-			$input['list_position'] == $position['list_position'];
+			update_option( 'display_position', $all_options['display_position'] );
 		}
 		
-		// display ordered list by default
-		$list_type = get_option( 'list_type' );
-		if ( ! isset( $input['list_style_type'] ) ) {
-			$input['list_style_type'] == 'ordered';
+		// sanitize the list style option
+		if ( ! isset( $all_options['list_type'] ) ) {
+			$input['list_type'] = 'ordered';
 		} else {
-			$input['list_style_type'] == $list_type['list_style_type'];
+			update_option( 'list_type', $all_options['list_type'] );
 		}
 		
-		// disable JS if checked
-		$disable_js = get_option( 'disable_js' );
-		if ( ! isset( $input['no_js'] ) ) {
-			$input['no_js'] == 0;
-		} else {
-			$input['no_js'] == $disable_js['no_js'];
-		}
-			
+		// sanitize the disable JS option
+		$all_options['disable_js'] = ( isset( $input['disable_js'] ) && $input['disable_js'] == true ? '1' : '0' );
+		
 		return $input;
 	}
 	

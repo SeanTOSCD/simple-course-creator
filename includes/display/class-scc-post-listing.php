@@ -52,8 +52,7 @@ class SCC_Post_Listing {
 	 */
 	public function post_listing( $content ) {
 		global $post;
-		$options = get_option( 'display_position' );
-		$no_js = get_option( 'disable_js' );
+		$options = get_option( 'course_display_settings' );
 		
 		// only display the post listing on WordPress posts
 		if ( 'post' !== $post->post_type || ! is_main_query() ) {
@@ -67,7 +66,7 @@ class SCC_Post_Listing {
 			return $content;
 		}	
 		
-		if ( $no_js['no_js'] != 1 ) {
+		if ( ! isset( $options['disable_js'] ) || $options['disable_js'] != '1' ) {
 			wp_enqueue_script( 'scc-post-list-js' );
 		}
 		
@@ -79,7 +78,7 @@ class SCC_Post_Listing {
 		$post_listing = ob_get_clean();	
 		
 		// display full course based on plugin display settings
-		switch ( $options['list_position'] ) {
+		switch ( $options['display_position'] ) {
 			case 'below':
 				$content = $content . $post_listing;
 				break;

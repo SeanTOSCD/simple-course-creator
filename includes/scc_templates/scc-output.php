@@ -15,7 +15,6 @@ $the_posts  = get_posts( array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) );
 $course_toggle = apply_filters( 'course_toggle', __( 'full course', 'scc' ) );
-$no_js = get_option( 'disable_js' );
 $posts = 1;		
 foreach ( $the_posts as $post_id ) {
 	if ( $post_id == $post->ID ) {
@@ -26,9 +25,9 @@ foreach ( $the_posts as $post_id ) {
 $array = get_option( 'taxonomy_' . $course->term_id );
 $post_list_title = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
-$list_option = get_option( 'list_type' );
-$list_container = $list_option[ 'list_style_type' ] == 'ordered' ? 'ol' : 'ul';
-$no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: none;"' : '';
+$options = get_option( 'course_display_settings' );
+$list_container = $options[ 'list_type' ] == 'ordered' ? 'ol' : 'ul';
+$no_list = $options[ 'list_type' ] == 'none' ? 'style="list-style: none;"' : '';
 /**
  * To override...
  * 
@@ -75,7 +74,7 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 			do_action( 'scc_below_description' );
 		endif;
 		
-		if ( $no_js['no_js'] != 1 ) { // only show toggle link if JS is enabled ?>	
+		if (  ! isset( $options['disable_js'] ) || $options['disable_js'] != '1' ) { // only show toggle link if JS is enabled ?>	
 			<a href="#" class="scc-toggle-post-list">
 				<?php 
 				do_action( 'scc_before_toggle' ); 
@@ -88,7 +87,7 @@ $no_list = $list_option[ 'list_style_type' ] == 'none' ? 'style="list-style: non
 			$no_js_class = 'scc-show-posts';
 		} 
 		?>
-		<div class="scc-post-container<?php echo ' ' . $no_js_class; ?>">
+		<div class="scc-post-container<?php echo ' ' . ( isset( $no_js_class ) ? $no_js_class : '' ); ?>">
 			<?php do_action( 'scc_above_list' ); ?>
 			<<?php echo $list_container; ?> class="scc-posts">
 				<?php foreach ( $the_posts as $key => $post_id ) : ?>
