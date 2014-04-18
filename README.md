@@ -1,6 +1,8 @@
 Simple Course Creator
 =====================
 
+View it on WordPress: (http://wordpress.org/plugins/simple-course-creator/)
+
 Simple Course Creator is designed to easily link posts together in a series and output that series list in the content of each included post.
 
 #### Add-ons
