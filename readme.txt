@@ -1,5 +1,5 @@
 === Simple Course Creator ===
-Contributors: sdavis2702, mattonomics, dewanemutunga, alexmangini
+Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy
 Requires at least: 3.8
@@ -21,8 +21,11 @@ Extend the functionality of Simple Course Creator with these add-on plugins:
 * [SCC Customizer](https://wordpress.org/plugins/simple-course-creator-customizer/) - Customizer the SCC output using the native WordPress customizer.
 * [SCC Post Meta](https://wordpress.org/plugins/simple-course-creator-post-meta/) - Add author and published date to SCC post listing items.
 * [SCC Front Display](https://wordpress.org/plugins/simple-course-creator-front-display/) - Indicate a post’s course on the blog home, archive pages, and search results.
+* [SCC Updates](https://wordpress.org/plugins/simple-course-creator-updates/) - List the newest posts from your courses and stories in a timeline format anywhere on your site (shortcode).
 
 Follow Simple Course Creator’s development on [Github](https://github.com/sdavis2702/simple-course-creator)
+
+View all [contributors](https://github.com/sdavis2702/simple-course-creator/graphs/contributors) to SCC’s development.
 
 == Installation ==
 
