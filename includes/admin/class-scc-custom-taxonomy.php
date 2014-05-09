@@ -144,6 +144,7 @@ class SCC_Custom_Taxonomy {
 			</select>
 		</div>
 		<?php
+		do_action( 'scc_meta_box_add', $post_id ); // allow add-ons to add to this meta box
 	}
 	
 	
