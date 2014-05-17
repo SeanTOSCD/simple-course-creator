@@ -79,7 +79,7 @@ class Simple_Course_Creator {
 	 * load SCC textdomain
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'scc', false, SCC_DIR . "languages" );
+		load_plugin_textdomain( 'scc', false, SCC_DIR . 'languages/' );
 	}
 
 
