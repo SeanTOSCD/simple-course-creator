@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Course Creator\n"
-"POT-Creation-Date: 2014-04-14 19:56-0600\n"
-"PO-Revision-Date: 2014-04-14 19:56-0600\n"
+"POT-Creation-Date: 2014-05-10 13:17-0600\n"
+"PO-Revision-Date: 2014-05-10 13:17-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -72,25 +72,25 @@ msgstr ""
 msgid "Select Course"
 msgstr ""
 
-#: includes/admin/class-scc-custom-taxonomy.php:163
-#: includes/admin/class-scc-custom-taxonomy.php:188
+#: includes/admin/class-scc-custom-taxonomy.php:164
+#: includes/admin/class-scc-custom-taxonomy.php:189
 msgid "Post Listing Title"
 msgstr ""
 
-#: includes/admin/class-scc-custom-taxonomy.php:165
-#: includes/admin/class-scc-custom-taxonomy.php:192
+#: includes/admin/class-scc-custom-taxonomy.php:166
+#: includes/admin/class-scc-custom-taxonomy.php:193
 msgid "This is the displayed title of your post listing container."
 msgstr ""
 
-#: includes/admin/class-scc-custom-taxonomy.php:231
+#: includes/admin/class-scc-custom-taxonomy.php:232
 msgid "Course"
 msgstr ""
 
-#: includes/admin/class-scc-custom-taxonomy.php:255
+#: includes/admin/class-scc-custom-taxonomy.php:256
 msgid "no course selected"
 msgstr ""
 
-#: includes/admin/class-scc-custom-taxonomy.php:276
+#: includes/admin/class-scc-custom-taxonomy.php:277
 msgid "Show all courses"
 msgstr ""
 
@@ -98,65 +98,65 @@ msgstr ""
 msgid "Course Settings"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:44
+#: includes/admin/class-scc-settings-page.php:47
 msgid "Course Container Display Settings"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:47
+#: includes/admin/class-scc-settings-page.php:50
 msgid "Course Container Position"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:51
+#: includes/admin/class-scc-settings-page.php:53
 msgid "HTML List Style"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:55
+#: includes/admin/class-scc-settings-page.php:56
 msgid "Disable JavaScript"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:66
+#: includes/admin/class-scc-settings-page.php:72
 msgid ""
 "These settings control the front-end display of the post listing container "
 "inside of posts that are part of courses."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:80
+#: includes/admin/class-scc-settings-page.php:86
 msgid "Above Content"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:81
+#: includes/admin/class-scc-settings-page.php:87
 msgid "Below Content"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:82
+#: includes/admin/class-scc-settings-page.php:88
 msgid "Above & Below Content"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:83
+#: includes/admin/class-scc-settings-page.php:89
 msgid "Hide Course Container"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:91
+#: includes/admin/class-scc-settings-page.php:97
 msgid "Choose where to display your course container."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:106
+#: includes/admin/class-scc-settings-page.php:112
 msgid "Numbered List"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:107
+#: includes/admin/class-scc-settings-page.php:113
 msgid "Bullet Points"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:108
+#: includes/admin/class-scc-settings-page.php:114
 msgid "No List Indicator"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:116
+#: includes/admin/class-scc-settings-page.php:122
 msgid "Choose your preferred list element style."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:131
+#: includes/admin/class-scc-settings-page.php:137
 msgid ""
 "Check this box to disable JavaScript (the course list will show by default)."
 msgstr ""
@@ -226,6 +226,6 @@ msgstr ""
 msgid "View %s"
 msgstr ""
 
-#: includes/scc_templates/scc-output.php:16
+#: includes/scc_templates/scc-output.php:17
 msgid "full course"
 msgstr ""
