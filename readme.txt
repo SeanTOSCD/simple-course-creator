@@ -1,7 +1,7 @@
 === Simple Course Creator ===
 Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
-Tags: series, course, lesson, taxonomy
+Tags: series, course, lesson, taxonomy, sdavis2702
 Requires at least: 3.8
 Tested up to: 3.9
 Stable tag: 1.0.2
