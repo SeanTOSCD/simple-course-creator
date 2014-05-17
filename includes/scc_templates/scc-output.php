@@ -5,13 +5,13 @@
 // build the post listing based on course
 global $post;
 $the_posts  = get_posts( array( 
-	'post_type'      => 'post',
-	'posts_per_page' => -1,
-	'fields'         => 'ids',
-	'no_found_rows'  => true,
-	'orderby'        => 'date',
-	'order'          => 'asc',
-	'tax_query'      => array(
+	'post_type'			=> 'post',
+	'posts_per_page'	=> -1,
+	'fields'			=> 'ids',
+	'no_found_rows'		=> true,
+	'orderby'			=> 'date',
+	'order'				=> 'asc',
+	'tax_query'			=> array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) );
 $course_toggle = apply_filters( 'course_toggle', __( 'full course', 'scc' ) );
