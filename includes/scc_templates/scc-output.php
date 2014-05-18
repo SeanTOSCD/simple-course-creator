@@ -9,7 +9,7 @@ $the_posts  = get_posts( array(
 	'posts_per_page'	=> -1,
 	'fields'			=> 'ids',
 	'no_found_rows'		=> true,
-	'orderby'			=> 'date',
+	'orderby'			=> apply_filters( 'scc_orderby', 'date' ),
 	'order'				=> 'asc',
 	'tax_query'			=> array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
