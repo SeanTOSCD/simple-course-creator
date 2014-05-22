@@ -52,12 +52,16 @@ class SCC_Settings_Page {
 		// add option for choosing the list style (ul, ol, none)
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
 		
+		// add option for choosing current post text/font properties
+		add_settings_field( 'current_post', __( 'Current Post Style', 'scc'), array( $this, 'course_current_post' ), 'simple_course_creator', 'course_display_settings' );
+		
 		// add option for disabling JS
 		add_settings_field( 'disable_js', __( 'Disable JavaScript', 'scc'), array( $this, 'course_disable_js' ), 'simple_course_creator', 'course_display_settings' );
 		
 		if ( get_option( 'course_display_settings' ) == false ) {
 			update_option( 'display_position', 'above' );
 			update_option( 'list_type', 'ordered' );
+			update_option( 'current_post', 'none' );
 			update_option( 'disable_js', '0' );
 		}
 	}
@@ -125,6 +129,33 @@ class SCC_Settings_Page {
 	
 	
 	/**
+	 * course current post style option
+	 *
+	 * @callback_for 'current_post' field
+	 * @since 1.0.3
+	 */
+	public function course_current_post() {
+		$options = get_option( 'course_display_settings' );
+		
+		// possible list style options
+		$current_post = array(
+			'none'		=> array( 'value' => 'none', 'desc' => __( 'No Style', 'scc' ) ),
+			'bold'		=> array( 'value' => 'bold', 'desc' => __( 'Bold', 'scc' ) ),
+			'strike'	=> array( 'value' => 'strike', 'desc' => __( 'Strike', 'scc' ) ),
+			'italic'	=> array( 'value' => 'italic', 'desc' => __( 'Italic', 'scc' ) )
+		);
+		?>
+	    <select id="list_type" name="course_display_settings[current_post]">
+	    	<?php foreach ( $current_post as $cp ) { // display options from $current_post array ?>
+		    	<option value="<?php echo $cp['value']; ?>" <?php selected( $options['current_post'], $cp['value'] ); ?>><?php echo $cp['desc']; ?></option>
+		    <?php } ?>
+	    </select>
+	    <label><?php _e( 'Choose your preferred current post text/font style.', 'scc' ); ?></label>
+	    <?php
+	}
+	
+	
+	/**
 	 * disable JS option
 	 *
 	 * @callback_for 'disable_js' field
@@ -147,21 +178,28 @@ class SCC_Settings_Page {
 	public function save_settings( $input ) {
 		$all_options = get_option( 'course_display_settings' );
 		
-		// sanitize the display position option
+		// validate the display position option
 		if ( ! isset( $all_options['display_position'] ) ) {
 			$input['display_position'] = 'above';
 		} else {
 			update_option( 'display_position', $all_options['display_position'] );
 		}
 		
-		// sanitize the list style option
+		// validate the list style option
 		if ( ! isset( $all_options['list_type'] ) ) {
 			$input['list_type'] = 'ordered';
 		} else {
 			update_option( 'list_type', $all_options['list_type'] );
 		}
 		
-		// sanitize the disable JS option
+		// validate the current post style option
+		if ( ! isset( $all_options['current_post'] ) ) {
+			$input['current_post'] = 'none';
+		} else {
+			update_option( 'current_post', $all_options['current_post'] );
+		}
+		
+		// validate the disable JS option
 		$all_options['disable_js'] = ( isset( $input['disable_js'] ) && $input['disable_js'] == true ? '1' : '0' );
 		
 		return $input;

@@ -17,17 +17,25 @@ $the_posts  = get_posts( array(
 $course_toggle = apply_filters( 'course_toggle', __( 'full course', 'scc' ) );
 $posts = 1;		
 foreach ( $the_posts as $post_id ) {
-	if ( $post_id == $post->ID ) {
-		break;
-	}
-	$posts ++;
+	if ( $post_id == $post->ID ) break;	$posts ++;
 }
 $array = get_option( 'taxonomy_' . $course->term_id );
 $post_list_title = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
 $options = get_option( 'course_display_settings' );
-$list_container = $options[ 'list_type' ] == 'ordered' ? 'ol' : 'ul';
-$no_list = $options[ 'list_type' ] == 'none' ? 'style="list-style: none;"' : '';
+$list_container = $options['list_type'] == 'ordered' ? 'ol' : 'ul';
+$no_list = $options['list_type'] == 'none' ? 'style="list-style: none;"' : '';
+switch ( $options['current_post'] ) {
+	case 'bold':
+		$current_post = ' style="font-weight: bold;"';
+		break;
+	case 'italic':
+		$current_post = ' style="font-style: italic;"';
+		break;
+	case 'strike':
+		$current_post = ' style="text-decoration: line-through;"';
+		break;
+}
 /**
  * To override...
  * 
@@ -98,7 +106,7 @@ $no_list = $options[ 'list_type' ] == 'none' ? 'style="list-style: none;"' : '';
 							if ( ! is_single( $post_id ) ) :
 								echo '<a href="' . get_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a>';
 							else :
-								echo '<span class="scc-current-post">' . get_the_title( $post_id ) . '</span>';
+								echo '<span class="scc-current-post"' . $current_post . '>' . get_the_title( $post_id ) . '</span>';
 							endif;
 							?>
 						</span>
