@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Course Creator\n"
-"POT-Creation-Date: 2014-05-22 13:12-0600\n"
-"PO-Revision-Date: 2014-05-22 13:12-0600\n"
+"POT-Creation-Date: 2014-06-03 00:56-0600\n"
+"PO-Revision-Date: 2014-06-03 00:57-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -205,47 +205,27 @@ msgstr ""
 msgid "Plugin Resources"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:241
-msgid "New courses are created "
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:241
-msgid "here"
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:241
+#: includes/admin/class-scc-settings-page.php:242
+#, php-format
 msgid ""
-" under the Posts menu. Once a course is created, posts can be assigned to a "
-"course through the manage posts and edit post screens. To add content to the "
-"post listing output, see the "
+"New courses are created under the Posts menu. Once a course is created, "
+"posts can be assigned to a course through the manage posts and edit post "
+"screens. To add content to the post listing output, see the hooks & filters "
+"documentation %1$s. To completely override the output, CSS, and JS files, "
+"see the override plugin files documentation %2$s."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:241
-msgid "hooks & filters"
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:241
-msgid ""
-"documentation. To completely override the output, CSS, and JS files, see the "
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:241
-msgid "override plugin files"
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:241
-msgid "documentation."
-msgstr ""
-
-#: includes/admin/class-scc-settings-page.php:246
+#: includes/admin/class-scc-settings-page.php:251
 msgid "Plugin Contributors"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:249
-msgid " on GitHub and submit a pull request if you would like to pitch in."
+#: includes/admin/class-scc-settings-page.php:256
+#, php-format
+msgid ""
+"Fork %s on GitHub and submit a pull request if you would like to pitch in."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:272
+#: includes/admin/class-scc-settings-page.php:283
 #, php-format
 msgid "View %s"
 msgstr ""

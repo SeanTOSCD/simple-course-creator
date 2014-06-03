@@ -238,7 +238,12 @@ class SCC_Settings_Page {
 									<th scope="row"><?php _e( 'Plugin Resources', 'scc' ); ?></th>
 									<td>
 										<p class="resources">
-											<?php echo __( 'New courses are created ', 'scc' ) . '<a href="' . admin_url( 'edit-tags.php?taxonomy=course' ) . '">' . __( 'here', 'scc' ) . '</a>' . __( ' under the Posts menu. Once a course is created, posts can be assigned to a course through the manage posts and edit post screens. To add content to the post listing output, see the ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator#wordpress-hooks--filters" target="_blank">' . __( 'hooks & filters', 'scc' ) . '</a> ' . __( 'documentation. To completely override the output, CSS, and JS files, see the ', 'scc' ) . '<a href="https://github.com/sdavis2702/simple-course-creator#active-theme-file-overrides" target="_blank">' . __( 'override plugin files', 'scc' ) . '</a> ' . __( 'documentation.', 'scc' ); ?>
+											<?php
+												printf( __( 'New courses are created under the Posts menu. Once a course is created, posts can be assigned to a course through the manage posts and edit post screens. To add content to the post listing output, see the hooks & filters documentation %1$s. To completely override the output, CSS, and JS files, see the override plugin files documentation %2$s.', 'scc' ),
+													'<a href="https://github.com/sdavis2702/simple-course-creator#wordpress-hooks--filters" target="_blank">[?]</a>',
+													'<a href="https://github.com/sdavis2702/simple-course-creator#active-theme-file-overrides" target="_blank">[?]</a>'
+												);
+											?>
 										</p>
 									</td>
 								</tr>
@@ -246,7 +251,13 @@ class SCC_Settings_Page {
 									<th scope="row"><?php _e( 'Plugin Contributors', 'scc' ); ?></th>
 									<td>
 										<?php echo $this->scc_contributors(); ?>
-										<p><?php echo 'Fork <a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' . SCC_NAME . '</a> ' . __( ' on GitHub and submit a pull request if you would like to pitch in.', 'scc' ); ?></p>
+										<p>
+											<?php
+												printf( __( 'Fork %s on GitHub and submit a pull request if you would like to pitch in.', 'scc' ),
+													'<a href="https://github.com/sdavis2702/simple-course-creator" target="_blank">' . SCC_NAME . '</a>'
+												);
+											?>
+										</p>
 									</td>
 								</tr>
 							</tbody>
