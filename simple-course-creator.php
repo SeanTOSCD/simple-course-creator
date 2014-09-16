@@ -8,7 +8,7 @@
  * Author URI: http://seandavis.co
  * License: GPL2
  * Requires at least: 3.8
- * Tested up to: 4.0-alpha
+ * Tested up to: 4.0
  * Text Domain: scc
  * Domain Path: /languages/
  * 
