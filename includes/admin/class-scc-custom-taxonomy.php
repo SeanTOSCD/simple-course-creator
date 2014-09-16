@@ -54,26 +54,26 @@ class SCC_Custom_Taxonomy {
 	 */
 	public function register_taxonomy_course() {
 		$labels = array(
-			'name'              => _x( 'Courses', 'scc' ),
-			'singular_name'     => _x( 'Course', 'scc' ),
-			'search_items'      => __( 'Search Courses', 'scc' ),
-			'all_items'         => __( 'All Courses', 'scc' ),
-			'parent_item'       => __( 'Parent Course', 'scc' ),
-			'parent_item_colon' => __( 'Parent Course:', 'scc' ),
-			'edit_item'         => __( 'Edit Course', 'scc' ),
-			'update_item'       => __( 'Update Course', 'scc' ),
-			'add_new_item'      => __( 'Add New Course', 'scc' ),
-			'new_item_name'     => __( 'New Course Name', 'scc' ),
-			'menu_name'         => __( 'Courses', 'scc' ),
+			'name'				=> _x( 'Courses', 'scc' ),
+			'singular_name'		=> _x( 'Course', 'scc' ),
+			'search_items'		=> __( 'Search Courses', 'scc' ),
+			'all_items'			=> __( 'All Courses', 'scc' ),
+			'parent_item'		=> __( 'Parent Course', 'scc' ),
+			'parent_item_colon'	=> __( 'Parent Course:', 'scc' ),
+			'edit_item'			=> __( 'Edit Course', 'scc' ),
+			'update_item'		=> __( 'Update Course', 'scc' ),
+			'add_new_item'		=> __( 'Add New Course', 'scc' ),
+			'new_item_name'		=> __( 'New Course Name', 'scc' ),
+			'menu_name'			=> __( 'Courses', 'scc' ),
 			'popular_items'		=> __( 'Popular Courses', 'scc' )
 		);	
 		$args = array(
-			'hierarchical'      => false,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'course' ),
-	        'meta_box_cb'       => array( $this, 'course_meta_box' )
+			'hierarchical'		=> false,
+			'labels'			=> $labels,
+			'show_ui'			=> true,
+			'query_var'			=> true,
+			'rewrite'			=> array( 'slug' => 'course' ),
+			'meta_box_cb'		=> array( $this, 'course_meta_box' )
 		);		
 		register_taxonomy( 'course', array( 'post' ), $args );
 	}
@@ -273,7 +273,7 @@ class SCC_Custom_Taxonomy {
 	    	return;
 	    }
 	    ?>
-	    <select name="course">
+		<select name="course">
 			<option value=""><?php _e( 'Show all courses', 'scc' ) ?></option>
 			<?php foreach ( $all_courses as $course ) : ?>
 				<option value="<?php echo esc_attr( $course->slug ); ?>" <?php selected( $current_course, $course->slug ); ?>><?php echo esc_html( $course->name ); ?></option>

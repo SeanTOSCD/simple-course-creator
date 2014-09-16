@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: series, course, lesson, taxonomy, sdavis2702
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,9 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 6. course output expanded
 
 == Changelog ==
+
+= 1.0.4 =
+* Tweak: Improved translation strings and updated .pot file
 
 = 1.0.3 =
 * New: Added option to select the current post text style (bold, line-through, or italic)
