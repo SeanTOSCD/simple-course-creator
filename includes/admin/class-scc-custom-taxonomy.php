@@ -20,19 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
 
 class SCC_Custom_Taxonomy {
 
-		
+
 	/**
 	 * constructor for SCC_Custom_Taxonomy class
 	 */
 	public function __construct() {
-		
+
 		// load new taxonomy
 		add_action( 'init', array( $this, 'register_taxonomy_course' ) );
-		
+
 		// add custom meta fields to new term
 		add_action( 'course_add_form_fields', array( $this, 'course_meta_title' ), 10, 2 );
 		add_action( 'course_edit_form_fields', array( $this, 'edit_course_meta_title' ), 10, 2 );
-		
+
 		// save the term custom meta field inputs
 		add_action( 'edited_course', array( $this, 'save_course_meta_title' ), 10, 2 );  
 		add_action( 'create_course', array( $this, 'save_course_meta_title' ), 10, 2 );
@@ -44,8 +44,8 @@ class SCC_Custom_Taxonomy {
 		// taxonomy admin filtering
 		add_action( 'restrict_manage_posts', array( $this, 'course_posts' ) );
 	}
-	
-	
+
+
 	/**
 	 * register "Course" taxonomy 
 	 *
@@ -77,7 +77,7 @@ class SCC_Custom_Taxonomy {
 		);		
 		register_taxonomy( 'course', array( 'post' ), $args );
 	}
-	
+
 
 	/**
 	 * determine a post's Course
@@ -91,7 +91,7 @@ class SCC_Custom_Taxonomy {
 		}
 		return $course;
 	}
-	
+
 
 	/**
 	 * determine a post's Course ID
@@ -106,7 +106,7 @@ class SCC_Custom_Taxonomy {
 			return 0;
 		}
 	}
-	
+
 
 	/**
 	 * assign post to a course from edit post screen
@@ -124,10 +124,10 @@ class SCC_Custom_Taxonomy {
 	 * @uses retrieve_course_id()
 	 */
 	public function course_meta_box( $post ) {
-		
+
 		// get the current course for the post if set
 		$current_course = $this->retrieve_course_id( $post->ID );
-		
+
 		// get list of all courses and the taxonomy
 		$tax = get_taxonomy( 'course' );
 		$courses = get_terms( 'course', array( 'hide_empty' => false, 'orderby' => 'name' ) );
@@ -146,8 +146,8 @@ class SCC_Custom_Taxonomy {
 		<?php
 		do_action( 'scc_meta_box_add', $post_id ); // allow add-ons to add to this meta box
 	}
-	
-	
+
+
 	/**
 	 * add title field when creating a course
 	 *
@@ -166,8 +166,8 @@ class SCC_Custom_Taxonomy {
 			<p class="description"><?php _e( 'This is the displayed title of your post listing container.','scc' ); ?></p>
 		</div>
 	<?php }
-	
-	
+
+
 	/**
 	 * add title field for editing an existing course
 	 *
@@ -177,10 +177,10 @@ class SCC_Custom_Taxonomy {
 	 * the saved title, if it exists.
 	 */
 	public function edit_course_meta_title( $term ) {
- 
+
 		// put the term ID into a variable
 		$course_id = $term->term_id;
-	 
+
 		// retrieve the existing value for the course title
 		$term_meta = get_option( "taxonomy_$course_id" ); 
 		?>
@@ -194,8 +194,8 @@ class SCC_Custom_Taxonomy {
 			</td>
 		</tr>
 	<?php }
-	
-	
+
+
 	/**
 	 * save the course title
 	 *
@@ -217,7 +217,7 @@ class SCC_Custom_Taxonomy {
 			update_option( "taxonomy_$course_id", $term_meta );
 		}
 	}
-	
+
 
 	/**
 	 * output admin column header to the manage posts screen
@@ -234,7 +234,7 @@ class SCC_Custom_Taxonomy {
 		}
 		return $new_columns;
 	}
-	
+
 
 	/**
 	 * output admin column values
@@ -257,7 +257,7 @@ class SCC_Custom_Taxonomy {
 			}
 		}
 	}
-	
+
 
 	/**
 	 * filter posts by a particular course on manage posts screen

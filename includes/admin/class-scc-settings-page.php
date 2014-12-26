@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
 
 class SCC_Settings_Page {
 
-		
+
 	/**
 	 * constructor for SCC_Settings_Page class
 	 */
@@ -25,39 +25,39 @@ class SCC_Settings_Page {
 		// register settings
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
-	
-	
+
+
 	/**
 	 * add new settings page under Setting smenu
 	 */
 	public function settings_menu() {
 		add_options_page( SCC_NAME, __( 'Course Settings', 'scc' ), 'manage_options', 'simple_course_creator', array( $this, 'settings_page' ) );
 	}
-	
-	
+
+
 	/**
 	 * register settings
 	 */
 	public function register_settings() {
-	
+
 		// register display settings
 		register_setting( 'course_display_settings', 'course_display_settings', array( $this, 'save_settings' ) );
-		
+
 		// add display settings section
 		add_settings_section( 'course_display_settings', __( 'Course Container Display Settings', 'scc' ), array( $this, 'course_display_settings' ), 'simple_course_creator' );
-		
+
 		// add option for choosing the display position of the course
 		add_settings_field( 'display_position', __( 'Course Container Position', 'scc'), array( $this, 'course_list_position' ), 'simple_course_creator', 'course_display_settings' );
-		
+
 		// add option for choosing the list style (ul, ol, none)
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
-		
+
 		// add option for choosing current post text/font properties
 		add_settings_field( 'current_post', __( 'Current Post Style', 'scc'), array( $this, 'course_current_post' ), 'simple_course_creator', 'course_display_settings' );
-		
+
 		// add option for disabling JS
 		add_settings_field( 'disable_js', __( 'Disable JavaScript', 'scc'), array( $this, 'course_disable_js' ), 'simple_course_creator', 'course_display_settings' );
-		
+
 		if ( get_option( 'course_display_settings' ) == false ) {
 			update_option( 'display_position', 'above' );
 			update_option( 'list_type', 'ordered' );
@@ -65,8 +65,8 @@ class SCC_Settings_Page {
 			update_option( 'disable_js', '0' );
 		}
 	}
-	
-	
+
+
 	/**
 	 * create the section for course display
 	 *
@@ -75,8 +75,8 @@ class SCC_Settings_Page {
 	public function course_display_settings() {
 		echo '<p>' . __( 'These settings control the front-end display of the post listing container inside of posts that are part of courses.', 'scc' ) . '</p>';
 	}
-	
-	
+
+
 	/**
 	 * create course position option
 	 *
@@ -84,7 +84,7 @@ class SCC_Settings_Page {
 	 */
 	public function course_list_position() {
 		$options = get_option( 'course_display_settings' );
-		
+
 		// possible course position options
 		$course_container = array(
 			'above'	=> array( 'value' => 'above', 'desc' => __( 'Above Content', 'scc' ) ),
@@ -101,8 +101,8 @@ class SCC_Settings_Page {
 	    <label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
 	    <?php
 	}
-	
-	
+
+
 	/**
 	 * course list type option
 	 *
@@ -126,8 +126,8 @@ class SCC_Settings_Page {
 	    <label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
 	    <?php
 	}
-	
-	
+
+
 	/**
 	 * course current post style option
 	 *
@@ -136,7 +136,7 @@ class SCC_Settings_Page {
 	 */
 	public function course_current_post() {
 		$options = get_option( 'course_display_settings' );
-		
+
 		// possible list style options
 		$current_post = array(
 			'none'		=> array( 'value' => 'none', 'desc' => __( 'No Style', 'scc' ) ),
@@ -153,8 +153,8 @@ class SCC_Settings_Page {
 	    <label><?php _e( 'Choose your preferred current post text/font style.', 'scc' ); ?></label>
 	    <?php
 	}
-	
-	
+
+
 	/**
 	 * disable JS option
 	 *
@@ -168,8 +168,8 @@ class SCC_Settings_Page {
 		<label for="disable_js"><?php _e( 'Check this box to disable JavaScript (the course list will show by default).', 'scc' ); ?></label>
 		<?php	
 	}
-	
-	
+
+
 	/**
 	 * save display settings
 	 *
@@ -177,35 +177,35 @@ class SCC_Settings_Page {
 	 */
 	public function save_settings( $input ) {
 		$all_options = get_option( 'course_display_settings' );
-		
+
 		// validate the display position option
 		if ( ! isset( $all_options['display_position'] ) ) {
 			$input['display_position'] = 'above';
 		} else {
 			update_option( 'display_position', $all_options['display_position'] );
 		}
-		
+
 		// validate the list style option
 		if ( ! isset( $all_options['list_type'] ) ) {
 			$input['list_type'] = 'ordered';
 		} else {
 			update_option( 'list_type', $all_options['list_type'] );
 		}
-		
+
 		// validate the current post style option
 		if ( ! isset( $all_options['current_post'] ) ) {
 			$input['current_post'] = 'none';
 		} else {
 			update_option( 'current_post', $all_options['current_post'] );
 		}
-		
+
 		// validate the disable JS option
 		$all_options['disable_js'] = ( isset( $input['disable_js'] ) && $input['disable_js'] == true ? '1' : '0' );
 		
 		return $input;
 	}
-	
-	
+
+
 	/**
 	 * plugin settings page
 	 *
@@ -267,15 +267,15 @@ class SCC_Settings_Page {
 			</div>
 		<?php
 	}
-	
-	
+
+
 	/**
 	 * the contributors
 	 */
 	public function scc_contributors() { 
 		$contributors = $this->scc_get_contributors();									
 		$contributor_list = '<ul class="wp-people-group">';
-		
+
 		foreach ( $contributors as $contributor ) {
 			$contributor_list .= '<li class="wp-person">';
 			$contributor_list .= sprintf( '<a href="%s" title="%s">',
@@ -291,8 +291,8 @@ class SCC_Settings_Page {
 		$contributor_list .= '</ul>';
 		return $contributor_list;
 	}
-	
-	
+
+
 	/** 
 	 * get the repo contributors
 	 */
@@ -302,17 +302,17 @@ class SCC_Settings_Page {
 		if ( false !== $contributors ) {
 			return $contributors;
 		}
-		
+
 		$response = wp_remote_get( 'https://api.github.com/repos/sdavis2702/simple-course-creator/contributors' );
 		if ( is_wp_error( $response ) ) {
 			return array();
 		}
-		
+
 		$contributors = json_decode( wp_remote_retrieve_body( $response ) );
 		if ( ! is_array( $contributors ) ) {
 			return array();
 		}
-		
+
 		set_transient( $transient_key, $contributors, 3600 );
 		return (array) $contributors;
 	}

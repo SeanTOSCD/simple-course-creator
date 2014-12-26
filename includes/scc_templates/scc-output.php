@@ -2,6 +2,7 @@
 /**
  * output the HTML for post listings (course container)
  */
+
 // build the post listing based on course
 global $post;
 $the_posts  = get_posts( array( 
@@ -36,6 +37,7 @@ switch ( $options['current_post'] ) {
 		$current_post = ' style="text-decoration: line-through;"';
 		break;
 }
+
 /**
  * To override...
  * 
@@ -81,7 +83,7 @@ switch ( $options['current_post'] ) {
 			echo $course_description;
 			do_action( 'scc_below_description' );
 		endif;
-		
+
 		if (  ! isset( $options['disable_js'] ) || $options['disable_js'] != '1' ) { // only show toggle link if JS is enabled ?>	
 			<a href="#" class="scc-toggle-post-list">
 				<?php 
