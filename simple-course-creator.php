@@ -3,12 +3,12 @@
  * Plugin Name: Simple Course Creator
  * Plugin URI: http://buildwpyourself.com/downloads/simple-course-creator/
  * Description: Allows you to easily create and manage courses in your WordPress website.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Sean Davis
  * Author URI: http://seandavis.co
  * License: GPL2
  * Requires at least: 3.8
- * Tested up to: 4.0
+ * Tested up to: 4.1
  * Text Domain: scc
  * Domain Path: /languages/
  * 

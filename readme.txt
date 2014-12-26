@@ -3,8 +3,8 @@ Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy, sdavis2702
 Requires at least: 3.8
-Tested up to: 3.9
-Stable tag: 1.0.4
+Tested up to: 4.1
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,8 +86,11 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 
 == Changelog ==
 
+= 1.0.5 =
+* Tweaked: Code formatting
+
 = 1.0.4 =
-* Tweak: Improved translation strings and updated .pot file
+* Tweaked: Improved translation strings and updated .pot file
 
 = 1.0.3 =
 * New: Added option to select the current post text style (bold, line-through, or italic)
@@ -97,7 +100,7 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 * Fixed: PHP warnings based on sanitization of plugin settings
 
 = 1.0.1 =
-* New: Added "Disable JavaScript" (expand/collapse of post listing) setting on settings page
+* Added: "Disable JavaScript" (expand/collapse of post listing) setting on settings page
 
 = 1.0.0 =
 * first stable version
