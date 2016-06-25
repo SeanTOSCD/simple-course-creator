@@ -14,7 +14,7 @@
  * to one term.
  *
  * @since 1.0.0
- */ 
+ */
 if ( ! defined( 'ABSPATH' ) ) exit; // no accessing this file directly
 
 
@@ -34,7 +34,7 @@ class SCC_Custom_Taxonomy {
 		add_action( 'course_edit_form_fields', array( $this, 'edit_course_meta_title' ), 10, 2 );
 
 		// save the term custom meta field inputs
-		add_action( 'edited_course', array( $this, 'save_course_meta_title' ), 10, 2 );  
+		add_action( 'edited_course', array( $this, 'save_course_meta_title' ), 10, 2 );
 		add_action( 'create_course', array( $this, 'save_course_meta_title' ), 10, 2 );
 
 		// taxonomy admin columns
@@ -47,7 +47,7 @@ class SCC_Custom_Taxonomy {
 
 
 	/**
-	 * register "Course" taxonomy 
+	 * register "Course" taxonomy
 	 *
 	 * Also setup a custom metabox to appear on the edit post screen
 	 * using the course_meta_box() method.
@@ -66,7 +66,7 @@ class SCC_Custom_Taxonomy {
 			'new_item_name'		=> __( 'New Course Name', 'scc' ),
 			'menu_name'			=> __( 'Courses', 'scc' ),
 			'popular_items'		=> __( 'Popular Courses', 'scc' )
-		);	
+		);
 		$args = array(
 			'hierarchical'		=> false,
 			'labels'			=> $labels,
@@ -74,7 +74,7 @@ class SCC_Custom_Taxonomy {
 			'query_var'			=> true,
 			'rewrite'			=> array( 'slug' => 'course' ),
 			'meta_box_cb'		=> array( $this, 'course_meta_box' )
-		);		
+		);
 		register_taxonomy( 'course', array( 'post' ), $args );
 	}
 
@@ -144,7 +144,7 @@ class SCC_Custom_Taxonomy {
 			</select>
 		</div>
 		<?php
-		do_action( 'scc_meta_box_add', $post_id ); // allow add-ons to add to this meta box
+		do_action( 'scc_meta_box_add', $post->ID ); // allow add-ons to add to this meta box
 	}
 
 
@@ -171,9 +171,9 @@ class SCC_Custom_Taxonomy {
 	/**
 	 * add title field for editing an existing course
 	 *
-	 * Now that the "Post Listing Title" field is in place, users need 
+	 * Now that the "Post Listing Title" field is in place, users need
 	 * to be able to edit it on the term edit screen. This method adds
-	 * the form field to the term edit screen and populates it with 
+	 * the form field to the term edit screen and populates it with
 	 * the saved title, if it exists.
 	 */
 	public function edit_course_meta_title( $term ) {
@@ -182,7 +182,7 @@ class SCC_Custom_Taxonomy {
 		$course_id = $term->term_id;
 
 		// retrieve the existing value for the course title
-		$term_meta = get_option( "taxonomy_$course_id" ); 
+		$term_meta = get_option( "taxonomy_$course_id" );
 		?>
 		<tr class="form-field">
 			<th scope="row" valign="top">
@@ -241,7 +241,7 @@ class SCC_Custom_Taxonomy {
 	 *
 	 * On the manage posts screen beneath the header added in the columns()
 	 * method, output values for each post based on whether or not it is
-	 * assigned to a course. If so, output the course name. If not, 
+	 * assigned to a course. If so, output the course name. If not,
 	 * output a message.
 	 *
 	 * @uses retrieve_course()
