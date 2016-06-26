@@ -54,8 +54,6 @@ class SCC_Post_Listing {
 		global $post;
 		$default_options = array(
 			'display_position'  => 'above',
-			'list_type'         => 'ordered',
-			'current_post'      => 'none',
 			'disable_js'        => 0,
 		);
 		$options = get_option( 'course_display_settings', $default_options );
