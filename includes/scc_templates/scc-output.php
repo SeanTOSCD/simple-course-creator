@@ -6,13 +6,13 @@
 // build the post listing based on course
 global $post;
 $the_posts  = get_posts( array(
-	'post_type'			=> 'post',
-	'posts_per_page'	=> -1,
-	'fields'			=> 'ids',
-	'no_found_rows'		=> true,
-	'orderby'			=> apply_filters( 'scc_orderby', 'date' ),
-	'order'				=> 'asc',
-	'tax_query'			=> array(
+	'post_type'         => 'post',
+	'posts_per_page'    => -1,
+	'fields'            => 'ids',
+	'no_found_rows'     => true,
+	'orderby'           => apply_filters( 'scc_orderby', 'date' ),
+	'order'             => 'asc',
+	'tax_query'         => array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) );
 $course_toggle = apply_filters( 'course_toggle', __( 'full course', 'scc' ) );
@@ -23,7 +23,14 @@ foreach ( $the_posts as $post_id ) {
 $array = get_option( 'taxonomy_' . $course->term_id );
 $post_list_title = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
-$options = get_option( 'course_display_settings' );
+$default_options = array(
+	'display_position'  => 'above',
+	'list_type'         => 'ordered',
+	'current_post'      => 'none',
+	'disable_js'        => 0,
+);
+$options = get_option( 'course_display_settings', $default_options );
+$options = wp_parse_args( $options, $default_options );
 $list_container = $options['list_type'] == 'ordered' ? 'ol' : 'ul';
 $no_list = $options['list_type'] == 'none' ? 'style="list-style: none;"' : '';
 switch ( $options['current_post'] ) {

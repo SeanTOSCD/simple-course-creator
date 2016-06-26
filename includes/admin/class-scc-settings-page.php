@@ -18,10 +18,10 @@ class SCC_Settings_Page {
 	 * constructor for SCC_Settings_Page class
 	 */
 	public function __construct() {
-		
+
 		// load settings page
 		add_action( 'admin_menu', array( $this, 'settings_menu' ) );
-		
+
 		// register settings
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
@@ -57,13 +57,6 @@ class SCC_Settings_Page {
 
 		// add option for disabling JS
 		add_settings_field( 'disable_js', __( 'Disable JavaScript', 'scc'), array( $this, 'course_disable_js' ), 'simple_course_creator', 'course_display_settings' );
-
-		if ( get_option( 'course_display_settings' ) == false ) {
-			update_option( 'display_position', 'above' );
-			update_option( 'list_type', 'ordered' );
-			update_option( 'current_post', 'none' );
-			update_option( 'disable_js', '0' );
-		}
 	}
 
 
@@ -83,7 +76,11 @@ class SCC_Settings_Page {
 	 * @callback_for 'display_position' field
 	 */
 	public function course_list_position() {
-		$options = get_option( 'course_display_settings' );
+
+		// set default option value
+		$default = array( 'display_position' => 'above' );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
 
 		// possible course position options
 		$course_container = array(
@@ -93,13 +90,13 @@ class SCC_Settings_Page {
 			'hide'	=> array( 'value' => 'hide', 'desc' => __( 'Hide Course Container', 'scc' ) ),
 		);
 		?>
-	    <select id="display_position" name="course_display_settings[display_position]">
-	    	<?php foreach ( $course_container as $c ) { // display options from $course_container array ?>
-		    	<option value="<?php echo $c['value']; ?>" <?php selected( $options['display_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
-		    <?php } ?>
-	    </select>
-	    <label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
-	    <?php
+		<select id="display_position" name="course_display_settings[display_position]">
+			<?php foreach ( $course_container as $c ) { // display options from $course_container array ?>
+				<option value="<?php echo $c['value']; ?>" <?php selected( $options['display_position'], $c['value'] ); ?>><?php echo $c['desc']; ?></option>
+			<?php } ?>
+		</select>
+		<label><?php _e( 'Choose where to display your course container.', 'scc' ); ?></label>
+		<?php
 	}
 
 
@@ -109,8 +106,12 @@ class SCC_Settings_Page {
 	 * @callback_for 'list_type' field
 	 */
 	public function course_list_type() {
-		$options = get_option( 'course_display_settings' );
-		
+
+		// set default option value
+		$default = array( 'list_type' => 'ordered' );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
+
 		// possible list style options
 		$list_type = array(
 			'ordered'	=> array( 'value' => 'ordered', 'desc' => __( 'Numbered List', 'scc' ) ),
@@ -118,13 +119,13 @@ class SCC_Settings_Page {
 			'none'		=> array( 'value' => 'none', 'desc' => __( 'No List Indicator', 'scc' ) ),
 		);
 		?>
-	    <select id="list_type" name="course_display_settings[list_type]">
-	    	<?php foreach ( $list_type as $l ) { // display options from $list_type array ?>
-		    	<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
-		    <?php } ?>
-	    </select>
-	    <label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
-	    <?php
+		<select id="list_type" name="course_display_settings[list_type]">
+			<?php foreach ( $list_type as $l ) { // display options from $list_type array ?>
+				<option value="<?php echo $l['value']; ?>" <?php selected( $options['list_type'], $l['value'] ); ?>><?php echo $l['desc']; ?></option>
+			<?php } ?>
+		</select>
+		<label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
+		<?php
 	}
 
 
@@ -135,7 +136,11 @@ class SCC_Settings_Page {
 	 * @since 1.0.3
 	 */
 	public function course_current_post() {
-		$options = get_option( 'course_display_settings' );
+
+		// set default option value
+		$default = array( 'current_post' => 'none' );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
 
 		// possible list style options
 		$current_post = array(
@@ -145,13 +150,13 @@ class SCC_Settings_Page {
 			'italic'	=> array( 'value' => 'italic', 'desc' => __( 'Italic', 'scc' ) )
 		);
 		?>
-	    <select id="list_type" name="course_display_settings[current_post]">
-	    	<?php foreach ( $current_post as $cp ) { // display options from $current_post array ?>
-		    	<option value="<?php echo $cp['value']; ?>" <?php selected( $options['current_post'], $cp['value'] ); ?>><?php echo $cp['desc']; ?></option>
-		    <?php } ?>
-	    </select>
-	    <label><?php _e( 'Choose your preferred current post text/font style.', 'scc' ); ?></label>
-	    <?php
+		<select id="list_type" name="course_display_settings[current_post]">
+			<?php foreach ( $current_post as $cp ) { // display options from $current_post array ?>
+				<option value="<?php echo $cp['value']; ?>" <?php selected( $options['current_post'], $cp['value'] ); ?>><?php echo $cp['desc']; ?></option>
+			<?php } ?>
+		</select>
+		<label><?php _e( 'Choose your preferred current post text/font style.', 'scc' ); ?></label>
+		<?php
 	}
 
 
@@ -162,11 +167,15 @@ class SCC_Settings_Page {
 	 * @since 1.0.1
 	 */
 	public function course_disable_js() {
-		$options = get_option( 'course_display_settings' );
+
+		// set default option value
+		$default = array( 'disable_js' => 0 );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
 		?>
 		<input id="disable_js" type="checkbox" name="course_display_settings[disable_js]" value="1" <?php echo checked( 1, isset( $options['disable_js'] ) ? $options['disable_js'] : 0, false ); ?>>
 		<label for="disable_js"><?php _e( 'Check this box to disable JavaScript (the course list will show by default).', 'scc' ); ?></label>
-		<?php	
+		<?php
 	}
 
 
@@ -176,32 +185,31 @@ class SCC_Settings_Page {
 	 * @used_by course_list_position(), course_list_type(), & course_disable_js()
 	 */
 	public function save_settings( $input ) {
-		$all_options = get_option( 'course_display_settings' );
 
 		// validate the display position option
-		if ( ! isset( $all_options['display_position'] ) ) {
+		if ( ! isset( $input['display_position'] ) ) {
 			$input['display_position'] = 'above';
 		} else {
-			update_option( 'display_position', $all_options['display_position'] );
+			update_option( 'display_position', $input['display_position'] );
 		}
 
 		// validate the list style option
-		if ( ! isset( $all_options['list_type'] ) ) {
+		if ( ! isset( $input['list_type'] ) ) {
 			$input['list_type'] = 'ordered';
 		} else {
-			update_option( 'list_type', $all_options['list_type'] );
+			update_option( 'list_type', $input['list_type'] );
 		}
 
 		// validate the current post style option
-		if ( ! isset( $all_options['current_post'] ) ) {
+		if ( ! isset( $input['current_post'] ) ) {
 			$input['current_post'] = 'none';
 		} else {
-			update_option( 'current_post', $all_options['current_post'] );
+			update_option( 'current_post', $input['current_post'] );
 		}
 
 		// validate the disable JS option
-		$all_options['disable_js'] = ( isset( $input['disable_js'] ) && $input['disable_js'] == true ? '1' : '0' );
-		
+		$input['disable_js'] = ( isset( $input['disable_js'] ) && $input['disable_js'] == true ? '1' : '0' );
+
 		return $input;
 	}
 
@@ -224,7 +232,7 @@ class SCC_Settings_Page {
 					<a href="?page=simple_course_creator&tab=simple_course_creator_info" class="nav-tab <?php echo $active_tab == 'simple_course_creator_info' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Information', 'scc' ); ?></a>
 				</h2>
 				<form method="post" action="options.php">
-					<?php 
+					<?php
 					if ( $active_tab == 'simple_course_creator' ) {
 						settings_fields( 'course_display_settings' );
 						do_settings_sections( 'simple_course_creator' );
@@ -272,8 +280,8 @@ class SCC_Settings_Page {
 	/**
 	 * the contributors
 	 */
-	public function scc_contributors() { 
-		$contributors = $this->scc_get_contributors();									
+	public function scc_contributors() {
+		$contributors = $this->scc_get_contributors();
 		$contributor_list = '<ul class="wp-people-group">';
 
 		foreach ( $contributors as $contributor ) {
@@ -287,13 +295,13 @@ class SCC_Settings_Page {
 			$contributor_list .= sprintf( '<a class="web" href="%s">%s</a>', esc_url( 'https://github.com/' . $contributor->login ), esc_html( $contributor->login ) );
 			$contributor_list .= '</a>';
 			$contributor_list .= '</li>';
-		}										
+		}
 		$contributor_list .= '</ul>';
 		return $contributor_list;
 	}
 
 
-	/** 
+	/**
 	 * get the repo contributors
 	 */
 	public function scc_get_contributors() {
