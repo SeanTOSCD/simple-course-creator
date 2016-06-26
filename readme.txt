@@ -3,8 +3,8 @@ Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy, sdavis2702
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 1.0.5
+Tested up to: 4.6
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,13 +38,13 @@ View all [contributors](https://github.com/sdavis2702/simple-course-creator/grap
 
 = Can a post be assigned to more than one course? =
 
-No. A post can only be assign to one course that way it can display the rest of the course's posts within the content of said post. 
+No. A post can only be assign to one course that way it can display the rest of the course's posts within the content of said post.
 
 = Can I edit the course HTML output? =
 
 Yes. When creating a new course, the description and course title fields are used to display an introduction to the course. If they are filled out, they will display.
 
-From there, there are multiple ways to edit additional output. 
+From there, there are multiple ways to edit additional output.
 
 -- The first and easiest way is to use the built-in hooks and filter to customize the course box. You'd write your actions in your active theme functions file.
 
@@ -69,7 +69,7 @@ The course display toggle link is also filtered. Use the following filter to cha
 
 -- The second way is to override the plugin display files in your active theme.
 
-You'd create a directory in the ROOT of your active theme called `scc_templates` and in it, copy any of the files from the `includes/scc_templates` directory of the plugin. Your new theme files will override the plugin files. 
+You'd create a directory in the ROOT of your active theme called `scc_templates` and in it, copy any of the files from the `includes/scc_templates` directory of the plugin. Your new theme files will override the plugin files.
 
 Only use this method if you know your way around PHP, HTML, CSS, and JS.
 
@@ -85,6 +85,12 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 6. course output expanded
 
 == Changelog ==
+
+= 1.0.6 =
+* Added: setting for ordering the post listing using the "orderby" parameter
+* Added: "scc_order" filter to control whether the post listing displays ASC or DESC
+* Fixed: PHP notices
+* Fixed: database settings values inconsistencies
 
 = 1.0.5 =
 * Tweaked: Code formatting

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple Course Creator\n"
-"POT-Creation-Date: 2014-06-03 00:56-0600\n"
-"PO-Revision-Date: 2014-06-03 00:57-0600\n"
+"POT-Creation-Date: 2016-06-25 23:24-0800\n"
+"PO-Revision-Date: 2016-06-25 23:25-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -111,14 +111,18 @@ msgid "HTML List Style"
 msgstr ""
 
 #: includes/admin/class-scc-settings-page.php:56
-msgid "Current Post Style"
+msgid "Order Posts By"
 msgstr ""
 
 #: includes/admin/class-scc-settings-page.php:59
+msgid "Current Post Style"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:62
 msgid "Disable JavaScript"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:76
+#: includes/admin/class-scc-settings-page.php:72
 msgid ""
 "These settings control the front-end display of the post listing container "
 "inside of posts that are part of courses."
@@ -144,68 +148,96 @@ msgstr ""
 msgid "Choose where to display your course container."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:116
+#: includes/admin/class-scc-settings-page.php:120
 msgid "Numbered List"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:117
+#: includes/admin/class-scc-settings-page.php:121
 msgid "Bullet Points"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:118
+#: includes/admin/class-scc-settings-page.php:122
 msgid "No List Indicator"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:126
+#: includes/admin/class-scc-settings-page.php:130
 msgid "Choose your preferred list element style."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:142
-msgid "No Style"
+#: includes/admin/class-scc-settings-page.php:149
+msgid "Date"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:143
-msgid "Bold"
+#: includes/admin/class-scc-settings-page.php:150
+msgid "Author"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:144
-msgid "Strike"
+#: includes/admin/class-scc-settings-page.php:151
+msgid "Title"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:145
-msgid "Italic"
+#: includes/admin/class-scc-settings-page.php:152
+msgid "Last Modified"
 msgstr ""
 
 #: includes/admin/class-scc-settings-page.php:153
+msgid "Random"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:154
+msgid "Comment Count"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:162
+msgid "Choose how to order to order your post listing."
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:182
+msgid "No Style"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:183
+msgid "Bold"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:184
+msgid "Strike"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:185
+msgid "Italic"
+msgstr ""
+
+#: includes/admin/class-scc-settings-page.php:193
 msgid "Choose your preferred current post text/font style."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:168
+#: includes/admin/class-scc-settings-page.php:212
 msgid ""
 "Check this box to disable JavaScript (the course list will show by default)."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:220
+#: includes/admin/class-scc-settings-page.php:270
 msgid " Settings"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:223
+#: includes/admin/class-scc-settings-page.php:273
 msgid "Display"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:224
+#: includes/admin/class-scc-settings-page.php:274
 msgid "Information"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:234
+#: includes/admin/class-scc-settings-page.php:284
 msgid " Information"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:238
+#: includes/admin/class-scc-settings-page.php:288
 msgid "Plugin Resources"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:242
+#: includes/admin/class-scc-settings-page.php:292
 #, php-format
 msgid ""
 "New courses are created under the Posts menu. Once a course is created, "
@@ -215,21 +247,21 @@ msgid ""
 "see the override plugin files documentation %2$s."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:251
+#: includes/admin/class-scc-settings-page.php:301
 msgid "Plugin Contributors"
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:256
+#: includes/admin/class-scc-settings-page.php:306
 #, php-format
 msgid ""
 "Fork %s on GitHub and submit a pull request if you would like to pitch in."
 msgstr ""
 
-#: includes/admin/class-scc-settings-page.php:283
+#: includes/admin/class-scc-settings-page.php:333
 #, php-format
 msgid "View %s"
 msgstr ""
 
-#: includes/scc_templates/scc-output.php:17
+#: includes/scc_templates/scc-output.php:29
 msgid "full course"
 msgstr ""

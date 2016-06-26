@@ -8,24 +8,24 @@
  * Author URI: http://seandavis.co
  * License: GPL2
  * Requires at least: 3.8
- * Tested up to: 4.1
+ * Tested up to: 4.6
  * Text Domain: scc
  * Domain Path: /languages/
- * 
+ *
  * This plugin is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as 
+ * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
- * 
+ *
  * This plugin is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see http://www.gnu.org/licenses/.
  *
- * The basic foundation of this plugin was highly influenced by Mike 
- * Jolley's WP Post Series plugin. Special thanks to him. Check out 
+ * The basic foundation of this plugin was highly influenced by Mike
+ * Jolley's WP Post Series plugin. Special thanks to him. Check out
  * his website - http://mikejolley.com -
  *
  * @package Simple Course Creator
@@ -56,7 +56,7 @@ class Simple_Course_Creator {
 		define( 'SCC_NAME', 'Simple Course Creator' );
 
 		// define plugin version
-		define( 'SCC_VERSION', '1.0.5' );
+		define( 'SCC_VERSION', '1.0.6' );
 
 		// define plugin directory
 		define( 'SCC_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
@@ -83,7 +83,7 @@ class Simple_Course_Creator {
 	}
 
 
-	/** 
+	/**
 	 * enqueue *back-end* scripts and styles
 	 */
 	public function admin_assets() {
