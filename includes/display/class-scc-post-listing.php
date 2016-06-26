@@ -22,10 +22,10 @@ class SCC_Post_Listing {
 	 * constructor for SCC_Post_Listing class
 	 */
 	public function __construct() {
-		
+
 		// display post listing in content
 		add_filter( 'the_content', array( $this, 'post_listing' ) );
-		
+
 		// load the correct post listing stylesheet based on hierarchy
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_styles' ) );
 	}
@@ -52,30 +52,37 @@ class SCC_Post_Listing {
 	 */
 	public function post_listing( $content ) {
 		global $post;
-		$options = get_option( 'course_display_settings' );
+		$default_options = array(
+			'display_position'  => 'above',
+			'list_type'         => 'ordered',
+			'current_post'      => 'none',
+			'disable_js'        => 0,
+		);
+		$options = get_option( 'course_display_settings', $default_options );
+		$options = wp_parse_args( $options, $default_options );
 
 		// only display the post listing on WordPress posts
 		if ( 'post' !== $post->post_type || ! is_main_query() ) {
 			return $content;
-		}	
+		}
 
 		$course = $this->retrieve_course( $post->ID );
 
 		// if there's no course, just display the content
 		if ( ! $course ) {
 			return $content;
-		}	
+		}
 
 		if ( ! isset( $options['disable_js'] ) || $options['disable_js'] != '1' ) {
 			wp_enqueue_script( 'scc-post-list-js' );
 		}
 
-		ob_start(); 	
+		ob_start();
 
 		// include *the appropriate* template file
 		$this->get_template( 'scc-output.php', array( 'course' => $course ) );
 
-		$post_listing = ob_get_clean();	
+		$post_listing = ob_get_clean();
 
 		// display full course based on plugin display settings
 		switch ( $options['display_position'] ) {
@@ -90,7 +97,7 @@ class SCC_Post_Listing {
 				break;
 			default:
 				$content = $post_listing . $content;
-		}		
+		}
 		return $content;
 	}
 
@@ -138,8 +145,8 @@ class SCC_Post_Listing {
 
 
 	/**
-	 * setup stylesheet and script for post listing 
-	 * 
+	 * setup stylesheet and script for post listing
+	 *
 	 * @credits stylesheet hierarchy approach by Easy Digital Downloads
 	 */
 	public function frontend_styles() {
