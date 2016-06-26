@@ -22,7 +22,7 @@ $the_posts  = get_posts( array(
 	'fields'            => 'ids',
 	'no_found_rows'     => true,
 	'orderby'           => $options['scc_orderby'],
-	'order'             => 'asc',
+	'order'             => apply_filters( 'scc_order', 'ASC' ),
 	'tax_query'         => array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) );
