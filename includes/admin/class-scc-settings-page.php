@@ -52,6 +52,9 @@ class SCC_Settings_Page {
 		// add option for choosing the list style (ul, ol, none)
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
 
+		// add option for ordering posts
+		add_settings_field( 'scc_orderby', __( 'Order Posts By', 'scc'), array( $this, 'course_orderby' ), 'simple_course_creator', 'course_display_settings' );
+
 		// add option for choosing current post text/font properties
 		add_settings_field( 'current_post', __( 'Current Post Style', 'scc'), array( $this, 'course_current_post' ), 'simple_course_creator', 'course_display_settings' );
 
@@ -84,10 +87,10 @@ class SCC_Settings_Page {
 
 		// possible course position options
 		$course_container = array(
-			'above'	=> array( 'value' => 'above', 'desc' => __( 'Above Content', 'scc' ) ),
-			'below'	=> array( 'value' => 'below', 'desc' => __( 'Below Content', 'scc' ) ),
-			'both'	=> array( 'value' => 'both', 'desc' => __( 'Above & Below Content', 'scc' ) ),
-			'hide'	=> array( 'value' => 'hide', 'desc' => __( 'Hide Course Container', 'scc' ) ),
+			'above' => array( 'value' => 'above', 'desc' => __( 'Above Content', 'scc' ) ),
+			'below' => array( 'value' => 'below', 'desc' => __( 'Below Content', 'scc' ) ),
+			'both'  => array( 'value' => 'both', 'desc' => __( 'Above & Below Content', 'scc' ) ),
+			'hide'  => array( 'value' => 'hide', 'desc' => __( 'Hide Course Container', 'scc' ) ),
 		);
 		?>
 		<select id="display_position" name="course_display_settings[display_position]">
@@ -114,9 +117,9 @@ class SCC_Settings_Page {
 
 		// possible list style options
 		$list_type = array(
-			'ordered'	=> array( 'value' => 'ordered', 'desc' => __( 'Numbered List', 'scc' ) ),
-			'unordered'	=> array( 'value' => 'unordered', 'desc' => __( 'Bullet Points', 'scc' ) ),
-			'none'		=> array( 'value' => 'none', 'desc' => __( 'No List Indicator', 'scc' ) ),
+			'ordered'   => array( 'value' => 'ordered', 'desc' => __( 'Numbered List', 'scc' ) ),
+			'unordered' => array( 'value' => 'unordered', 'desc' => __( 'Bullet Points', 'scc' ) ),
+			'none'      => array( 'value' => 'none', 'desc' => __( 'No List Indicator', 'scc' ) ),
 		);
 		?>
 		<select id="list_type" name="course_display_settings[list_type]">
@@ -125,6 +128,38 @@ class SCC_Settings_Page {
 			<?php } ?>
 		</select>
 		<label><?php _e( 'Choose your preferred list element style.', 'scc' ); ?></label>
+		<?php
+	}
+
+
+	/**
+	 * course order posts by option
+	 *
+	 * @callback_for 'scc_orderby' field
+	 */
+	public function course_orderby() {
+
+		// set default option value
+		$default = array( 'scc_orderby' => 'date' );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
+
+		// possible list style options
+		$orderby = array(
+			'date'          => array( 'value' => 'date', 'desc' => __( 'Date', 'scc' ) ),
+			'author'        => array( 'value' => 'author', 'desc' => __( 'Author', 'scc' ) ),
+			'title'         => array( 'value' => 'title', 'desc' => __( 'Title', 'scc' ) ),
+			'modified'      => array( 'value' => 'modified', 'desc' => __( 'Last Modified', 'scc' ) ),
+			'random'        => array( 'value' => 'random', 'desc' => __( 'Random', 'scc' ) ),
+			'comment_count' => array( 'value' => 'comment_count', 'desc' => __( 'Comment Count', 'scc' ) ),
+		);
+		?>
+		<select id="scc_orderby" name="course_display_settings[scc_orderby]">
+			<?php foreach ( $orderby as $o ) { // display options from $orderby array ?>
+				<option value="<?php echo $o['value']; ?>" <?php selected( $options['scc_orderby'], $o['value'] ); ?>><?php echo $o['desc']; ?></option>
+			<?php } ?>
+		</select>
+		<label><?php _e( 'Choose how to order to order your post listing.', 'scc' ); ?></label>
 		<?php
 	}
 
@@ -144,10 +179,10 @@ class SCC_Settings_Page {
 
 		// possible list style options
 		$current_post = array(
-			'none'		=> array( 'value' => 'none', 'desc' => __( 'No Style', 'scc' ) ),
-			'bold'		=> array( 'value' => 'bold', 'desc' => __( 'Bold', 'scc' ) ),
-			'strike'	=> array( 'value' => 'strike', 'desc' => __( 'Strike', 'scc' ) ),
-			'italic'	=> array( 'value' => 'italic', 'desc' => __( 'Italic', 'scc' ) )
+			'none'   => array( 'value' => 'none', 'desc' => __( 'No Style', 'scc' ) ),
+			'bold'   => array( 'value' => 'bold', 'desc' => __( 'Bold', 'scc' ) ),
+			'strike' => array( 'value' => 'strike', 'desc' => __( 'Strike', 'scc' ) ),
+			'italic' => array( 'value' => 'italic', 'desc' => __( 'Italic', 'scc' ) )
 		);
 		?>
 		<select id="list_type" name="course_display_settings[current_post]">
@@ -198,6 +233,13 @@ class SCC_Settings_Page {
 			$input['list_type'] = 'ordered';
 		} else {
 			update_option( 'list_type', $input['list_type'] );
+		}
+
+		// validate the orderby option
+		if ( ! isset( $input['scc_orderby'] ) ) {
+			$input['scc_orderby'] = 'date';
+		} else {
+			update_option( 'scc_orderby', $input['scc_orderby'] );
 		}
 
 		// validate the current post style option
