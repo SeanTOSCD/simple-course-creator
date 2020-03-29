@@ -3,8 +3,8 @@ Contributors: sdavis2702
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S
 Tags: series, course, lesson, taxonomy, sdavis2702
 Requires at least: 3.8
-Tested up to: 4.6
-Stable tag: 1.0.6
+Tested up to: 5.3
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,9 +23,9 @@ Extend the functionality of Simple Course Creator with these add-on plugins:
 * [SCC Front Display](https://wordpress.org/plugins/simple-course-creator-front-display/) - Indicate a post’s course on the blog home, archive pages, and search results.
 * [SCC Updates](https://wordpress.org/plugins/simple-course-creator-updates/) - List the newest posts from your courses and stories in a timeline format anywhere on your site (shortcode).
 
-Follow Simple Course Creator’s development on [Github](https://github.com/sdavis2702/simple-course-creator)
+Follow Simple Course Creator’s development on [Github](https://github.com/sdavismedia/simple-course-creator)
 
-View all [contributors](https://github.com/sdavis2702/simple-course-creator/graphs/contributors) to SCC’s development.
+View all [contributors](https://github.com/sdavismedia/simple-course-creator/graphs/contributors) to SCC’s development.
 
 == Installation ==
 
@@ -38,7 +38,10 @@ View all [contributors](https://github.com/sdavis2702/simple-course-creator/grap
 
 = Can a post be assigned to more than one course? =
 
-No. A post can only be assign to one course that way it can display the rest of the course's posts within the content of said post.
+No. A post should only be assigned to one course. This is because the purpose of the plugin is to display the other
+posts that are in the same course as the post being viewed. In order to do that, the other posts must be pulled from a
+single source (the one course you have chosen). Technically, multiple courses can be added to a posts. However, only
+course will display on your post, and you will not have control of which course that is.
 
 = Can I edit the course HTML output? =
 
@@ -85,6 +88,11 @@ Only use this method if you know your way around PHP, HTML, CSS, and JS.
 6. course output expanded
 
 == Changelog ==
+
+= 1.0.7 =
+* Added: setting for ordering the post listing using the "order" parameter (ascending or descending)
+* Removed: "scc_order" filter, which is now replaced by the above setting
+* Tweaked: default border and padding on the post listing display
 
 = 1.0.6 =
 * Added: setting for ordering the post listing using the "orderby" parameter

@@ -6,36 +6,41 @@ global $post;
 
 // get/set the option values
 $default_options = array(
-	'display_position'  => 'above',
-	'list_type'         => 'ordered',
-	'scc_orderby'       => 'date',
-	'current_post'      => 'none',
-	'disable_js'        => 0,
+	'display_position' => 'above',
+	'list_type'        => 'ordered',
+	'scc_orderby'      => 'date',
+	'scc_order'        => 'ASC',
+	'current_post'     => 'none',
+	'disable_js'       => 0,
 );
-$options = get_option( 'course_display_settings', $default_options );
-$options = wp_parse_args( $options, $default_options );
+$options         = get_option( 'course_display_settings', $default_options );
+$options         = wp_parse_args( $options, $default_options );
 
 // build the post listing based on course
-$the_posts  = get_posts( array(
+$the_posts     = get_posts( array(
 	'post_type'         => 'post',
 	'posts_per_page'    => -1,
 	'fields'            => 'ids',
 	'no_found_rows'     => true,
 	'orderby'           => $options['scc_orderby'],
-	'order'             => apply_filters( 'scc_order', 'ASC' ),
+	'order'             => $options['scc_order'],
 	'tax_query'         => array(
 		array( 'taxonomy' => 'course', 'field' => 'slug', 'terms' => $course->slug )
 ) ) );
+
 $course_toggle = apply_filters( 'course_toggle', __( 'full course', 'scc' ) );
-$posts = 1;
+$posts         = 1;
+
 foreach ( $the_posts as $post_id ) {
 	if ( $post_id == $post->ID ) break;	$posts ++;
 }
-$array = get_option( 'taxonomy_' . $course->term_id );
-$post_list_title = $array['post_list_title'];
+
+$array              = get_option( 'taxonomy_' . $course->term_id );
+$post_list_title    = $array['post_list_title'];
 $course_description = term_description( $course->term_id, 'course' );
-$list_container = $options['list_type'] == 'ordered' ? 'ol' : 'ul';
-$no_list = $options['list_type'] == 'none' ? 'style="list-style: none;"' : '';
+$list_container     = $options['list_type'] == 'ordered' ? 'ol' : 'ul';
+$no_list            = $options['list_type'] == 'none' ? 'style="list-style: none;"' : '';
+
 switch ( $options['current_post'] ) {
 	case 'bold':
 		$current_post = ' style="font-weight: bold;"';
@@ -78,9 +83,8 @@ switch ( $options['current_post'] ) {
  *			}
  *			add_filter( 'course_toggle', 'your_filter_name' );
  */
-?>
 
-<?php if ( is_single() && sizeof( $the_posts ) > 1 ) :
+if ( is_single() && sizeof( $the_posts ) > 1 ) :
 	do_action( 'scc_before_container' );
 	?>
 	<div id="scc-wrap" class="scc-post-list">
@@ -131,7 +135,7 @@ switch ( $options['current_post'] ) {
 			</<?php echo $list_container; ?>>
 		</div>
 		<?php do_action( 'scc_container_bottom' ); ?>
-	</div>
-<?php
+	</div><!-- #scc-wrap -->
+	<?php
 do_action( 'scc_after_container' );
 endif;

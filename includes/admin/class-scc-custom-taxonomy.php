@@ -73,7 +73,9 @@ class SCC_Custom_Taxonomy {
 			'show_ui'			=> true,
 			'query_var'			=> true,
 			'rewrite'			=> array( 'slug' => 'course' ),
-			'meta_box_cb'		=> array( $this, 'course_meta_box' )
+			'show_in_rest'      => true,
+			//'meta_box_cb'		=> array( $this, 'course_meta_box' )
+			//TODO: build custom select menu so only one course can be selected
 		);
 		register_taxonomy( 'course', array( 'post' ), $args );
 	}
@@ -109,7 +111,9 @@ class SCC_Custom_Taxonomy {
 
 
 	/**
-	 * assign post to a course from edit post screen
+	 * INCOMPATIBLE WITH GUTENBERG - assign post to a course from edit post screen
+	 *
+	 * TODO: build custom select menu so only one course can be selected
 	 *
 	 * If a post already belongs to a course, show that course as
 	 * a selected option. Whether assigned to a course already or

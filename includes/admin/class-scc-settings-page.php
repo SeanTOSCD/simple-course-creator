@@ -53,7 +53,10 @@ class SCC_Settings_Page {
 		add_settings_field( 'list_type', __( 'HTML List Style', 'scc'), array( $this, 'course_list_type' ), 'simple_course_creator', 'course_display_settings' );
 
 		// add option for ordering posts
-		add_settings_field( 'scc_orderby', __( 'Order Posts By', 'scc'), array( $this, 'course_orderby' ), 'simple_course_creator', 'course_display_settings' );
+		add_settings_field( 'scc_orderby', __( 'Sort Posts By', 'scc'), array( $this, 'course_orderby' ), 'simple_course_creator', 'course_display_settings' );
+
+		// add option for ordering posts ASC or DESC
+		add_settings_field( 'scc_order', __( 'Order Posts', 'scc'), array( $this, 'course_order' ), 'simple_course_creator', 'course_display_settings' );
 
 		// add option for choosing current post text/font properties
 		add_settings_field( 'current_post', __( 'Current Post Style', 'scc'), array( $this, 'course_current_post' ), 'simple_course_creator', 'course_display_settings' );
@@ -85,7 +88,7 @@ class SCC_Settings_Page {
 		$options = get_option( 'course_display_settings', $default );
 		$options = wp_parse_args( $options, $default );
 
-		// possible course position options
+		// possible list options
 		$course_container = array(
 			'above' => array( 'value' => 'above', 'desc' => __( 'Above Content', 'scc' ) ),
 			'below' => array( 'value' => 'below', 'desc' => __( 'Below Content', 'scc' ) ),
@@ -115,7 +118,7 @@ class SCC_Settings_Page {
 		$options = get_option( 'course_display_settings', $default );
 		$options = wp_parse_args( $options, $default );
 
-		// possible list style options
+		// possible list options
 		$list_type = array(
 			'ordered'   => array( 'value' => 'ordered', 'desc' => __( 'Numbered List', 'scc' ) ),
 			'unordered' => array( 'value' => 'unordered', 'desc' => __( 'Bullet Points', 'scc' ) ),
@@ -144,7 +147,7 @@ class SCC_Settings_Page {
 		$options = get_option( 'course_display_settings', $default );
 		$options = wp_parse_args( $options, $default );
 
-		// possible list style options
+		// possible list options
 		$orderby = array(
 			'date'          => array( 'value' => 'date', 'desc' => __( 'Date', 'scc' ) ),
 			'author'        => array( 'value' => 'author', 'desc' => __( 'Author', 'scc' ) ),
@@ -159,7 +162,35 @@ class SCC_Settings_Page {
 				<option value="<?php echo $o['value']; ?>" <?php selected( $options['scc_orderby'], $o['value'] ); ?>><?php echo $o['desc']; ?></option>
 			<?php } ?>
 		</select>
-		<label><?php _e( 'Choose how to order to order your post listing.', 'scc' ); ?></label>
+		<label><?php _e( 'Choose a parameter for ordering your post listing.', 'scc' ); ?></label>
+		<?php
+	}
+
+
+	/**
+	 * course order ASC or DESC
+	 *
+	 * @callback_for 'scc_order' field
+	 */
+	public function course_order() {
+
+		// set default option value
+		$default = array( 'scc_order' => 'ASC' );
+		$options = get_option( 'course_display_settings', $default );
+		$options = wp_parse_args( $options, $default );
+
+		// possible list options
+		$order = array(
+			'asc'  => array( 'value' => 'asc', 'desc' => __( 'Ascending', 'scc' ) ),
+			'desc' => array( 'value' => 'desc', 'desc' => __( 'Descending', 'scc' ) ),
+		);
+		?>
+		<select id="scc_order" name="course_display_settings[scc_order]">
+			<?php foreach ( $order as $o ) { // display options from $order array ?>
+				<option value="<?php echo $o['value']; ?>" <?php selected( $options['scc_order'], $o['value'] ); ?>><?php echo $o['desc']; ?></option>
+			<?php } ?>
+		</select>
+		<label><?php _e( 'Choose whether your list should be in ascending or descending order.', 'scc' ); ?></label>
 		<?php
 	}
 
@@ -177,7 +208,7 @@ class SCC_Settings_Page {
 		$options = get_option( 'course_display_settings', $default );
 		$options = wp_parse_args( $options, $default );
 
-		// possible list style options
+		// possible list options
 		$current_post = array(
 			'none'   => array( 'value' => 'none', 'desc' => __( 'No Style', 'scc' ) ),
 			'bold'   => array( 'value' => 'bold', 'desc' => __( 'Bold', 'scc' ) ),
@@ -240,6 +271,13 @@ class SCC_Settings_Page {
 			$input['scc_orderby'] = 'date';
 		} else {
 			update_option( 'scc_orderby', $input['scc_orderby'] );
+		}
+
+		// validate the order option
+		if ( ! isset( $input['scc_order'] ) ) {
+			$input['scc_order'] = 'ASC';
+		} else {
+			update_option( 'scc_order', $input['scc_order'] );
 		}
 
 		// validate the current post style option

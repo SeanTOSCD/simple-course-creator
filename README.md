@@ -28,7 +28,8 @@ Once a course is selected and saved, a course listing will appear in the content
 
 The course listing will display as a container that shows nothing but the course title and the course description, which is what you filled out when creating a new course.
 
-The series of posts will be hidden until you click a subtle link for displaying them, at which point the container will gracefully expand to reveal all posts in said course. They will all be linked except for the current post.
+The series of posts will be hidden until you click a subtle link for displaying them, at which point the container
+ will gracefully expand to reveal all posts in said course. They will all be linked except for the current post.
 
 ![Course Collapsed](http://buildwpyourself.com/wp-content/uploads/2014/03/course-collapsed.png)
 
@@ -39,11 +40,23 @@ Styles are kept to a minimum so theme styles are inherited as much as possible.
 ### Simple Course Creator Settings
 ---
 
-Simple Course Creator comes with a few very simple options.
+Simple Course Creator comes with very simple options.
 
-Choose to display your course containers above post content, below post content, both above and below post content, or do not display it at all while still preserving the course configuration.
+1. Choose to display your course containers above post content, below post content, both above and below post content
+, or do not display it at all while still preserving the course configuration.
 
-You may also choose your course list style type. They can be displayed as a numbered list, a bulleted list, or a list with no list indicator at all... simply stacked like paragraphs.
+2. Choose your course list style type. They can be displayed as a numbered list, a bulleted list, or a list with no list
+ indicator at all... simply stacked like paragraphs.
+ 
+ 3. Choose to sort your posts by date, author, title, last modified, random, or comment count.
+ 
+ 4. Choose to display your sorted posts in ascending order or descending order.
+ 
+ 5. Choose a display style of the current post in your post listing. Select between bold, strike, italic, or no style
+  at all.
+  
+  6. Disable plugin javascript, which causes the post listing to be fully expended on page load. The show/hide
+   function is removed. 
 
 ![Simple Course Creator Settings](http://buildwpyourself.com/wp-content/uploads/2014/03/scc-settings.png)
 
@@ -121,6 +134,7 @@ This plugin, like WordPress, is licensed under the GPL. Do what you want with it
 ### Developer
 ---
 
-I'm Sean. I created the [Volatyl Framework](http://volatylthemes.com) for WordPress. I like to do most of my WordPress stuff on [Build WordPress Yourself](http://buildwpyourself.com/). I also write stuff on my [personal site](http://seandavis.co) and [SDavis Media](http://sdavismedia.com). Follow me on the [Twitter](http://sdvs.me/twitter) machine.
+I'm Sean. I've created a few little pieces of software. I'm not that easy to find online. That's by design.
 
-Meanwhile, tell me... is this plugin useful to you? If so, consider buying me a box of "Tazo: Awake - English Breakfast Black Tea." I need ALL the energiez. Thanks. [Donate Black Tea](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S)
+Is this plugin useful to you? If so, please consider buying me a bag of coffee beans. Thank you much. [Donate via
+ PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=52HQDSEUA542S)
